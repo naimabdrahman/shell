@@ -1,5 +1,5 @@
 hostnamectl set-hostname openshift.nar.test
-yum install docker wget vim
+yum -y install docker wget vim
 echo "INSECURE_REGISTRY='--insecure-registry 172.30.0.0/16'" >>/etc/sysconfig/docker
 service docker restart
 chkconfig docker on
