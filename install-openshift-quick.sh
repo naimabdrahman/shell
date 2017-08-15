@@ -45,4 +45,4 @@ reboot
 #oadm router
 #oadm registry
 
-echo -e "Browse to https://127.0.0.1:8443 in your web browser"
+#echo -e "Browse to https://127.0.0.1:8443 in your web browser"
