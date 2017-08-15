@@ -29,6 +29,7 @@ chmod u+x /usr/local/bin/start_openshift.sh
 mkdir /opt/openshift/
 systemctl daemon-reload
 systemctl start openshift
+chkconfig openshift on
 
 
 echo -e "export KUBECONFIG=/opt/openshift/openshift.local.config/master/admin.kubeconfig" >> /root/.bashrc
