@@ -35,10 +35,12 @@ echo -e "export KUBECONFIG=/opt/openshift/openshift.local.config/master/admin.ku
 echo -e "export CURL_CA_BUNDLE=/opt/openshift/openshift.local.config/master/ca.crt" >> /root/.bashrc
 
 source /root/.bashrc
-oc login -u system:admin
-oadm policy add-scc-to-user hostnetwork -z router
-oadm router
-oadm registry
+sleep 2
+reboot
+
+#oc login -u system:admin
+#oadm policy add-scc-to-user hostnetwork -z router
+#oadm router
+#oadm registry
 
 echo -e "Browse to https://127.0.0.1:8443 in your web browser"
-
