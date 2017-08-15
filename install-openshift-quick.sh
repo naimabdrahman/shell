@@ -34,6 +34,7 @@ chkconfig openshift on
 
 echo -e "export KUBECONFIG=/opt/openshift/openshift.local.config/master/admin.kubeconfig" >> /root/.bashrc
 echo -e "export CURL_CA_BUNDLE=/opt/openshift/openshift.local.config/master/ca.crt" >> /root/.bashrc
+cat /root/.bashrc
 
 source /root/.bashrc
 sleep 2
