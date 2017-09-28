@@ -10,3 +10,5 @@
 
 #method2
 date | ssh localhost 'cat> tmp2 && date -s "`cat tmp2`"'
+#for bulk
+#for x in `cat list` ; do date | ssh $x 'cat> tmp2 && date -s "`cat tmp2`"' ; done
