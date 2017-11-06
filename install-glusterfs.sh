@@ -1,5 +1,6 @@
 # gfs installation for seamless ssh centos 7 cluster
 # list is made of all available hosts (currently tested for 3 hosts)
+# this is for replication config
 # iptables and selinux disabled 
 
 
