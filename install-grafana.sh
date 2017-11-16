@@ -17,4 +17,5 @@ systemctl start grafana-server
 systemctl status grafana-server
 systemctl enable  grafana-server
 
-echo -e "\n\npls login to http://IP:3000\n\n"
+echo -e "\n\npls login to http://IP:3000"
+echo -e "\nu adm p adm\n\n"
