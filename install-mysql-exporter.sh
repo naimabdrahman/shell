@@ -18,7 +18,7 @@ sleep 2
 cd /root/mysqld_exporter-0.9.0.linux-amd64
 export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/run/mysqld/mysqld.sock)/'
 sleep 2
-./mysqld_exporter &
+./mysqld_exporter >LOG 2>&1 &
 
 echo -e "\n\nbrowse to http://localhost:9104/metrics\n\n" 
 
