@@ -4,7 +4,7 @@ yum -y install wget
 
 mkdir /root/dl
 cd /root/dl
-wget "https://github.com/prometheus/node_exporter/releases/download/0.11.0/node_exporter-0.11.0.linux-amd64.tar.gz
+wget "https://github.com/prometheus/node_exporter/releases/download/0.11.0/node_exporter-0.11.0.linux-amd64.tar.gz"
 sleep 2
 
 cd /root
