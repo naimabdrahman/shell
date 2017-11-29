@@ -16,7 +16,8 @@ tar -xzvf /root/dl/mysqld_exporter-0.9.0.linux-amd64.tar.gz
 sleep 2
 
 cd /root/mysqld_exporter-0.9.0.linux-amd64
-export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/run/mysqld/mysqld.sock)/'
+#export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/run/mysqld/mysqld.sock)/'
+export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/lib/mysql/mysql.sock)/'
 sleep 2
 ./mysqld_exporter >LOG 2>&1 &
 
