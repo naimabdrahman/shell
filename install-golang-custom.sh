@@ -10,13 +10,23 @@ sleep 1
 tar -zxvf *.tar.gz
 sleep 1
 
-echo -e '\n' >>  >>/root/.bashrc
-echo -e '### GO ###' >>/root/.bashrc
-echo -e 'export GOROOT=$HOME/golang/go' >>/root/.bashrc
-echo -e 'export PATH=$PATH:$GOROOT/bin' >>/root/.bashrc
 
-sleep 1
-source /root/.bashrc
+###################################################################################################
+### select permanent or temporary ###
+
+### permanent path update ###
+
+#echo -e '\n' >>  >>/root/.bashrc
+#echo -e '### GO ###' >>/root/.bashrc
+#echo -e 'export GOROOT=$HOME/golang/go' >>/root/.bashrc
+#echo -e 'export PATH=$PATH:$GOROOT/bin' >>/root/.bashrc
+#sleep 1
+#source /root/.bashrc
+
+### temporary path update ###
+export GOROOT=$HOME/golang/go ; export PATH=$PATH:$GOROOT/bin ; source /root/.bashrc ; export GOPATH=/root/go ; source /root/.bashrc
+
+###################################################################################################
 
 sleep 1 
 go version
