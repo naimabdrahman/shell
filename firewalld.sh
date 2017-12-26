@@ -1,4 +1,4 @@
-# Adding new rules/port in firewalld
+# Adding new rules/port in firewalld in centos 7
 
 service firewalld start
 firewall-cmd --permanent --add-port=22/tcp
