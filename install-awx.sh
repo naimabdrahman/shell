@@ -40,14 +40,14 @@ echo -e "\n\npls add passord in /etc/ansible/hosts before using it\n\n "
 
 # Clone repository and deploy (it will take about 20 minutes)
 yum -y install git
-mkdir git
-cd git
+mkdir /root/git
+cd /root/git
 git clone https://github.com/ansible/awx.git
-cd awx/installer/
+cd /root/git/awx/installer/
 ansible-playbook -i inventory install.yml
 
 # Monitor migrations status (it will take about 10 minutes)
-#docker logs -f awx_task # disabled log monitoring
+#docker logs -f awx_task # log monitoring disabled 
 
 # Verify the application
 echo -e "\n\nNow you can access AWX web server http://localhost:80"
