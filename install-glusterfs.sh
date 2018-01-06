@@ -1,10 +1,10 @@
 # gfs installation for seamless ssh centos 7 cluster
-# list is made of all available hosts (currently tested for 3 hosts)
+# list is made of all available hosts (currently tested for 3 hosts) # file (list) should have been made available
 # this is for replication config
 # iptables and selinux disabled 
 
 
-#skipping below for disk creation
+# skipping below for disk creation
 #    mkfs.xfs -i size=512 /dev/sdb1
 #    mkdir -p /data/brick1
 #    echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' >> /etc/fstab
