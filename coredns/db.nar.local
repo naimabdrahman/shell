@@ -1,0 +1,21 @@
+$ORIGIN nar.local. 
+$TTL 86400 
+@	IN	SOA	dns.nar.local.	hostmaster.nar.local. (
+			2001062501 ; serial                     
+			21600      ; refresh after 6 hours                     
+			3600       ; retry after 1 hour                     
+			604800     ; expire after 1 week                     
+			86400 )    ; minimum TTL of 1 day  
+		     
+		           
+	IN	NS	dns.nar.local. ; in the domain       
+ 
+
+	
+dns	IN	A	10.0.0.3
+   
+app1	IN	A	10.0.0.1
+app2	IN	A	10.0.0.2
+client	IN	A	10.0.0.4
+
+test	IN	CNAME	client

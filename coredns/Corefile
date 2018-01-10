@@ -1,0 +1,6 @@
+.:53 {
+    proxy . 8.8.8.8:53
+    file db.nar.local nar.local
+    errors stdout
+    log stdout
+}
