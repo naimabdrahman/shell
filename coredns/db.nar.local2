@@ -1,0 +1,16 @@
+$ORIGIN nar.local.
+@       3600 IN SOA sns.dns.icann.org. noc.dns.icann.org. (
+                2018011001 ; serial
+                7200       ;
+                3600       ;
+                1209600    ;
+                3600       ;
+                )
+        3600 IN NS a.iana-servers.net.
+        3600 IN NS b.iana-servers.net.
+
+dns     IN A    10.0.0.3
+app1    IN A    10.0.0.1
+app2    IN A    10.0.0.2
+client  IN A    10.0.0.4
+
