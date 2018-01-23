@@ -19,7 +19,8 @@ for x in `cat list` ; do ssh $x 'mkdir /data/brick1/gv1' ; done
 
 
 # install gluster
-for x in `cat list` ; do ssh $x 'yum -y install centos-release-gluster312.noarch' ; done
+#for x in `cat list` ; do ssh $x 'yum -y install centos-release-gluster312.noarch' ; done # version 3.12
+for x in `cat list` ; do ssh $x 'yum -y install centos-release-gluster' ; done # latest version from The CentOS Storage Special Interest Group (SIG)
 for x in `cat list` ; do ssh $x 'yum -y install glusterfs-server' ; done
 
 for x in `cat list` ; do ssh $x 'service glusterd start' ; done
