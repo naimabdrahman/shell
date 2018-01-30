@@ -1,0 +1,14 @@
+# service is located at /etc/systemd/system/coredns.service 
+
+[Unit]
+Description=CoreDNS Service
+After=network.target
+
+[Service]
+Type=simple
+#ExecStart=/etc/coredns/coredns -conf /etc/coredns/Corefile -dns.port 53 # option 1
+ExecStart=/root/go/src/github.com/coredns/coredns/coredns -conf /root/go/src/github.com/coredns/coredns/Corefile # option 2 (dns port has been pointed in config file)
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
