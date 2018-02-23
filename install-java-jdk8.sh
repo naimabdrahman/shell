@@ -9,5 +9,5 @@ echo -e 'export PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile
 echo -e 'export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar' >> /etc/profile
 echo -e "#########">> /etc/profile
 sleep 1
-source /etc/profile
 
+echo -e "pls run >>>> source /etc/profile \nbefore start using java"
