@@ -40,7 +40,8 @@ for x in `cat list` ; do ssh $x 'gluster peer status' ; done
 
 
 # Set up a GlusterFS volume
-gluster volume create gv1 replica 3 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force
+gluster volume create gv1 replica 3 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force #3 replicas
+gluster volume create gv1 replica 3 arbiter 1 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force #3 replicas (with 1 arbiter)
 gluster volume start gv1
 gluster volume info
 
