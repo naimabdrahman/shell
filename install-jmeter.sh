@@ -1,5 +1,5 @@
 # Step 1 - install java 1.8
-yum install java-1.8.0-openjdk.x86_64
+yum -y install java-1.8.0-openjdk.x86_64
 
 # Step 2 - install jmeter 3.2
 curl https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-3.2.tgz > $HOME/apache-jmeter-3.2.tgz
@@ -31,10 +31,11 @@ java -cp $HOME/jmeter/lib/ext/plugins-manager.jar org.jmeterplugins.repository.P
 # jpgc-tst
 # jpgc-wsc
 
-$HOME/apps/jmeter/bin/PluginsManagerCMD.sh install jpgc-autostop,jpgc-casutg,jpgc-csl,jpgc-dummy,jpgc-ffw,jpgc-filterresults,jpgc-functions,jpgc-json,jpgc-mergeresults,jpgc-prmctl,jpgc-sense,jpgc-tst,jpgc-wsc
+./apache-jmeter-3.2/bin/PluginsManagerCMD.sh install jpgc-autostop,jpgc-casutg,jpgc-csl,jpgc-dummy,jpgc-ffw,jpgc-filterresults,jpgc-functions,jpgc-json,jpgc-mergeresults,jpgc-prmctl,jpgc-sense,jpgc-tst,jpgc-wsc
 
-# Step 6 - start jmeter-server
-$HOME/jmeter/bin/jmeter-server
+
+# Step 6 - start jmeter-server # not started 
+#$HOME/jmeter/bin/jmeter-server
 
 # Optional - install Maven
 curl http://ftp.wayne.edu/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.2-bin.tar.gz > $HOME/apache-maven-3.5.2-bin.tar.gz
