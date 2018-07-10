@@ -10,14 +10,11 @@ sysctl net.ipv4.ip_forward
 cat /proc/sys/net/ipv4/ip_forward
 
 
-
-
-
 # Enable IP fwd
 #sysctl -w net.ipv4.ip_forward=1
 
 # Enable IP fwd permanently
-echo "net.ipv4.ip_forward = 1" >> /usr/lib/sysctl.d/50-default.conf
+echo -e "\n# Enable IP forwarding for multiple NICs\nnet.ipv4.ip_forward = 1" >> /usr/lib/sysctl.d/50-default.conf
 sysctl -p 
 #reboot
 
