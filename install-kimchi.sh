@@ -10,3 +10,5 @@ sed -i  's/^#session_timeout = .*/session_timeout = 1440/g' /etc/wok/wok.conf
 systemctl enable wokd
 systemctl start wokd
 
+echo -e "pls visit https://IP address:8001/"
+
