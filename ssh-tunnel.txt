@@ -1,0 +1,39 @@
+Local port forwarding
+
+$ ssh -L 9000:imgur.com:80 user@example.com
+
+The key here is -L which says we’re doing local port forwarding. 
+Then it says we’re forwarding our local port 9000 to imgur.com:80, which is the default port for HTTP. 
+Now open your browser and go to http://localhost:9000.
+
+
+
+Remote port forwarding
+
+$ ssh -R 9000:localhost:3000 user@example.com
+$ ssh -R 80:example.com:9090 localhost (run from browser box)
+$ ssh -R 80:localhost:9090 localhost (run from server box will also work)
+
+The syntax here is very similar to local port forwarding, with a single change of -L for -R. 
+But as with local port forwarding, the syntax remains the same.
+First you need to specify the port on which th remote server will listen, which in this case is 9000, and next follows localhost for your local machine, and the local port, which in this case is 3000.
+There is one more thing you need to do to enable this. SSH doesn’t by default allow remote hosts to forwarded ports. To enable this open /etc/ssh/sshd_config and add the following line somewhere in that config file.
+
+
+
+To make it accessible from outside
+>>> location /etc/ssh/sshd_config
+	change from
+		#GatewayPorts no
+ 	to
+		GatewayPorts yes
+
+
+
+To manage tunnels as background processes
+$ ssh -f -N -R 80:localhost:9090 localhost
+
+
+
+ssh -f -N -R 80:localhost:9090 localhost
+
