@@ -10,6 +10,7 @@ echo -e "baseurl=https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod"
 echo -e "enabled=1" >> /etc/yum.repos.d/dotnetdev.repo
 echo -e "gpgcheck=1" >> /etc/yum.repos.d/dotnetdev.repo
 echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> /etc/yum.repos.d/dotnetdev.repo
+
 yum -y install dotnet-sdk-2.0.0
 
 echo 'export PATH=$PATH:$HOME/dotnet' > /etc/profile.d/dotnetdev.sh
