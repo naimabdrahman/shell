@@ -1,0 +1,27 @@
+[root@haproxy ~]# cat /etc/haproxy/haproxy.cfg
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    mode               http
+    log                global
+    option             httplog
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+frontend http-in
+    bind *:80
+    default_backend    backend_servers
+    option             forwardfor
+
+backend backend_servers
+    balance            roundrobin
+    server             dock1.nar.test 10.124.20.60:80 check
+    server             dock2.nar.test 10.124.20.59:80 check

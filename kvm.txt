@@ -1,0 +1,46 @@
+Rename KVM VM with virsh
+#virsh domrename {domain} {new-name}
+
+
+How to clone your VM and spawn new instances in KVM
+#virt-clone --original {Domain-Vm-Name-Here} --auto-clone
+#virt-clone --original {Domain-Vm-Name-Here} --name {New-Domain-Vm-Name-Here}
+
+
+How to list vm
+#virsh list --all
+
+
+How to start the kvm virtual machine:
+#virsh start <machine>
+
+
+Find IP / mac address
+#virsh domiflist <kvm guest>
+#virsh domifaddr <kvm guest>
+
+Shut Down A Guest
+# virsh shutdown domainName
+
+Rebooting A Guest
+# virsh reboot domaiName
+
+
+Get Information About Guest
+# virsh dominfo dominName
+
+
+Create snapshot
+# virsh snapshot-create-as --domain {VM-NAME} --name "{SNAPSHOT-NAME}"
+
+To see existing snapshots (if any) for a domain called openbsd, enter:
+# virsh snapshot-list --domain (DOMAIN)
+
+
+To revert or restore snapshot:
+# virsh snapshot-revert --domain centos7.0-oc6 --snapshotname snapshot1 --running
+
+
+To suspend and resume kvm guest:
+# virsh suspend [domain-id, domain-name or domain-uuid]
+# virsh resume [domain-id, domain-name or domain-uuid]

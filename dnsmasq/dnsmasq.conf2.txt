@@ -1,0 +1,28 @@
+#https://www.linux.com/learn/dnsmasq-easy-lan-name-services
+#/etc/dnsmasq.conf
+domain-needed
+bogus-priv
+
+domain=mydomain.net
+expand-hosts
+local=/mydomain.net/ 
+
+listen-address=127.0.0.1 
+listen-address=192.168.1.10
+listen-address=192.168.2.10
+bind-interfaces
+
+#dhcp-range=lan,192.168.1.100,192.168.1.200
+#dhcp-range=wifi,192.168.2.100,192.168.2.200
+#set default gateway
+#dhcp-option=lan,3,192.168.1.50
+#dhcp-option=wifi,3,192.168.2.50
+#set DNS server
+#dhcp-option=lan,6,192.168.1.10
+#dhcp-option=wifi,6,192.168.2.10
+
+server=8.8.8.8
+server=8.8.4.4
+server=208.67.220.220
+
+#static IP in /etc/hosts

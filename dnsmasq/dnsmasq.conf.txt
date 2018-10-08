@@ -1,0 +1,9 @@
+domain-needed
+bogus-priv
+
+listen-address=10.28.43.171
+bind-interfaces
+
+server=8.8.8.8
+server=8.8.4.4
+server=208.67.220.220
