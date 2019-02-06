@@ -14,7 +14,7 @@ echo $lalala ### to check variable lalala
 vncserver -kill $lalala
 
 
-# job completed or not verification
+# verification of job completion
 if test $? -eq 0 ; then echo -e "\njob completed"; else echo -e "\njob not completed"; fi
 
  
