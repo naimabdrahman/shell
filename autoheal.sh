@@ -4,8 +4,8 @@
 ## best configured as a service
 
 while true;
- do curl -m 5 http://localhost:8082 #5 sec testing !!!
- if test $? -ne 0; then docker restart <CONTAINER ID> ; else echo -e "fine" >> /dev/null ; fi  # update <CONTAINER ID> !!!
+ do curl -m 5 http://localhost:8082 > /dev/null     #5 sec testing !!!
+ if test $? -ne 0; then docker restart <CONTAINER ID> ; else echo -e "fine" > /dev/null ; fi  # update <CONTAINER ID> !!!
  sleep 600 #600 sec interval !!!
 done
 
