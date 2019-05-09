@@ -1,0 +1,4 @@
+## This is a artefact wich is subset between list1 and list2
+## can be extracted via command below
+#for x in `cat list1` ; do cat list2 | grep -i $x  ; done
+
