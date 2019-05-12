@@ -1,5 +1,7 @@
-# to run standalone prometheus service in centos 7
-# this script should be placed in the prometheus working dir
+## to run standalone prometheus service in centos 7
+## this script should be placed in the prometheus working dir
 
 for x in `ps  -ef | grep prom | grep -v grep  | awk '{print $2}'` ; do kill -9 $x ; done
-./prometheus --config.file=prometheus.yml &
+#./prometheus --config.file=prometheus.yml & #run in working dir
+./prometheus --config.file=/root/prometheus-2.0.0.linux-amd64/prometheus.yml &
+
