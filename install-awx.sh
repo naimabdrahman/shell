@@ -1,8 +1,11 @@
 # install awx on centos 7
 
 # Install EPEL repository
+yum -y install epel-release
 
 # Disable firewall and SELinux
+service firewalld stop
+chkconfig firewalld off
 
 # Install docker CE
 yum -y update
