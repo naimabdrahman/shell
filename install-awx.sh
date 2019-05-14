@@ -1,4 +1,5 @@
 # install awx on centos 7
+
 # Requirement
 # RAM: at leasts 4GB of memory.
 # CPU: at least 2 cpu cores.
