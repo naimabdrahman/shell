@@ -44,7 +44,7 @@ cat /etc/ansible/ansible.cfg.bckup | sed 's/#host_key_checking = False/host_key_
 cat /etc/ansible/hosts > /etc/ansible/hosts.bckup
 echo -e "[local]" > /etc/ansible/hosts
 echo -e "localhost ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=<INSERT>" >> /etc/ansible/hosts
-echo -e "\n\npls add passord in /etc/ansible/hosts before using it\n\n "
+echo -e "\n\npls add password in /etc/ansible/hosts before using it\n\n "
 
 
 # Clone repository and deploy (it will take about 20 minutes)
