@@ -55,3 +55,12 @@ ansible-playbook -i inventory install.yml
 # Verify the application
 echo -e "\n\nNow you can access AWX web server http://localhost:80"
 echo -e "\nThe default administrator username is admin and the password is password\n\n"
+
+
+# Just in case the playbook fail due to docker python issue 
+# (Cannot have both the docker-py and docker python modules installed together as they use the same namespace and cause a corrupt installation. Please uninstall both packages, and re-install only the docker-py or docker python module)
+# pls run below commands to uninstall
+#pip uninstall docker docker-py docker-compose
+
+# And then install the docker-compose module, which will install the docker module as well as a dependency.
+#pip install docker-compose
