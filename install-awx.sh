@@ -1,4 +1,9 @@
 # install awx on centos 7
+# Requirement
+# RAM: at leasts 4GB of memory.
+# CPU: at least 2 cpu cores.
+# HDD: at least 20GB of space.
+# Running Docker, Openshift, or Kubernetes.
 
 # Install EPEL repository
 yum -y install epel-release
