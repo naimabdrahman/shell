@@ -10,6 +10,8 @@ chkconfig httpd on
 ## install php
 yum -y install php php-mbstring php-pear 
 
+## install mariadb client
+yum -y install mariadb
 
 
 ## configure mysql db (assuming mysql db already installed in node2)
@@ -17,6 +19,8 @@ yum -y install php php-mbstring php-pear
 mysql -u root -ppassword -e -h node2 "create database wordpress;"
 mysql -u root -ppassword -e -h node2 "grant all privileges on wordpress.* to wordpress@'node1.nar.test' identified by 'password';" 
 mysql -u root -ppassword -e -h node2 "flush privileges;"
+
+# or in mysql shell run "create database wordpress;grant all privileges on wordpress.* to wordpress@'node1.nar.test' identified by 'password';flush privileges;" 
 
 
 
