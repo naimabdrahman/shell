@@ -1,0 +1,8 @@
+epel
+firewalld 
+selinux
+chronyd 
+ssh keys
+visudo
+vim 
+git
