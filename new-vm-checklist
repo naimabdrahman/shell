@@ -1,8 +1,10 @@
 epel
-firewalld 
-selinux
-chronyd 
+firewalld off
+selinux off
+chronyd on
 ssh keys
 visudo
 vim 
 git
+hostname - for cluster mode
+/etc/hosts - for cluster mode 
