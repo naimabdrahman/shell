@@ -1,8 +1,8 @@
-#install nfs server on centos 7
+## install nfs server on centos 7
 
 yum -y install nfs-utils
-cat /etc/idmapd.conf > /etc/idmapd.conf.bckup
-cat /etc/idmapd.conf.bckup | sed 's/#Domain = local.domain.edu/nar.test/g' > /etc/idmapd.conf
+#cat /etc/idmapd.conf > /etc/idmapd.conf.bckup # optional
+#cat /etc/idmapd.conf.bckup | sed 's/#Domain = local.domain.edu/nar.test/g' > /etc/idmapd.conf # optional
 
 mkdir /data
 touch /etc/exports
