@@ -3,6 +3,7 @@ firewalld off
 selinux off
 chronyd on
 ssh keys
+useradd
 visudo
 vim 
 git
