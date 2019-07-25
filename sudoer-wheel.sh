@@ -1,4 +1,3 @@
-## WIP
 ## allows sudoer power for wheel group 
 ## tested on centos 7
 
@@ -17,6 +16,12 @@ fi
 
 # make changes to sudoer file (remove comment out on wheel)
 sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
+
+
+# to comment out wheel again (NOT USED)
+#sed -i 's/^\%wheel/# & /g' /etc/sudoers
+
+
 
 # verify sudoer file
 echo -e "\n\n###################### result ########################"
