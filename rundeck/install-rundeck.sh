@@ -14,7 +14,7 @@ yum -y install rundeck
 
 # start rundeck service
 service rundeckd start
-chkconfig rundeck on
+chkconfig rundeckd on
 
 # additional configuration
 echo -e "\n\nfor additional configuration, pls refer to properties configuration in /root/git/shell/rundeck/"
