@@ -1,4 +1,5 @@
 #install ansible on centos 7
+yum -y install epel-release
 yum --enablerepo=epel -y install ansible openssh-clients 
 cat /etc/ansible/ansible.cfg  > /etc/ansible/ansible.cfg.bckup
 cat /etc/ansible/ansible.cfg.bckup | sed 's/#host_key_checking = False/host_key_checking = False/g' > /etc/ansible/ansible.cfg
