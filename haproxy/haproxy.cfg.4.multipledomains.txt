@@ -1,0 +1,44 @@
+## HAProxy config template for multiple domains (similar to apache vhost )
+## tested and workds fine
+
+
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    mode               http
+    log                global
+    option             httplog
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+frontend http-in
+    bind *:80
+    option             forwardfor
+
+    acl host_server1 hdr(host) -i html1.nar.test # insert domain1
+    acl host_server2 hdr(host) -i html2.nar.test # insert domain2
+
+    use_backend backend_server1 if host_server1  # domain1 link to backend1
+    use_backend backend_server2 if host_server2  # domain2 link to backend2
+
+
+backend backend_server1   # backend1
+    balance            roundrobin
+    server             node1.nar.test 192.168.1.41:80 check
+    server             node3.nar.test 192.168.1.43:80 check
+    
+
+backend backend_server2   # backend2
+    balance            roundrobin
+    server             node2.nar.test 192.168.1.42:80 check
+    server             node4.nar.test 192.168.1.44:80 check
+
+
