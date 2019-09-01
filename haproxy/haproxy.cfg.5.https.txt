@@ -1,1 +1,36 @@
+## HAProxy config template for 'SSL passthrough'
+## tested and workds fine
+## reference  https://serversforhackers.com/c/using-ssl-certificates-with-haproxy
 
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    mode               http
+    log                global
+    option             httplog
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+frontend http-in
+    bind                *:80
+    bind                *:443
+    option              tcplog
+    mode                tcp
+    default_backend     backend_server1
+    option              forwardfor
+
+
+backend backend_server1
+    mode        tcp
+    balance     roundrobin
+    option      ssl-hello-chk
+    server      node1.nar.test 192.168.1.41:443 check
+    server      node2.nar.test 192.168.1.42:443 check
