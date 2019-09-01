@@ -8,6 +8,6 @@ make server.csr
 openssl x509 -in server.csr -out server.cert -req -signkey server.key -days 3650
 
 
-## option 2
+## option 2 - used for haproxy
 #cd /etc/pki/tls/certs
 #openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/pki/tls/certs/haproxy.pem -out /etc/pki/tls/certs/haproxy.pem -days 3650 
