@@ -2,7 +2,12 @@ epel
 firewalld off
 selinux off
 chronyd on
-ssh keys >> ssh-keygen -f id_rsa -t rsa -N ""
+
+estblish ssh keys 
+  >> ssh-keygen -f id_rsa -t rsa -N ""
+  >> yum -y install sshpass
+  >> sshpass -p 'password' ssh-copy-id root@localhost
+
 useradd
 visudo
 vim 
