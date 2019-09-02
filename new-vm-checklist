@@ -2,7 +2,7 @@ epel
 firewalld off
 selinux off
 chronyd on
-ssh keys
+ssh keys >> ssh-keygen -f id_rsa -t rsa -N ""
 useradd
 visudo
 vim 
