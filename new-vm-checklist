@@ -1,3 +1,7 @@
+## New VM init
+## tested on centos 7
+## password text file is prepared separately prior to running this script
+
 ## epel
 yum -y install epel-release
 
