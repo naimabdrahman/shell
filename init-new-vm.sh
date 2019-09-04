@@ -20,9 +20,9 @@ chkconfig chronyd on
 
 
 ## establish ssh keys 
-cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N "" ; sleep 3
-yum -y install sshpass ; sleep 3
-sshpass -p "`cat /root/password`" ssh-copy-id -o StrictHostKeyChecking=no root@localhost ; sleep 3
+cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N "" ; sleep 1
+yum -y install sshpass ; sleep 1
+sshpass -p "`cat /root/password`" ssh-copy-id -o StrictHostKeyChecking=no root@localhost ; sleep 1
 cd
 
 
