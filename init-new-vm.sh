@@ -43,6 +43,11 @@ yum -y install fail2ban
 service fail2ban start
 chkconfig fail2ban on
 
+
+# remove unwanted files and dir
+rm -rf /root/git
+rm -rf /root/password
+
 ## reboot
 reboot
 
