@@ -20,16 +20,18 @@ chkconfig chronyd on
 
 
 ## establish ssh keys 
-cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N ""
-yum -y install sshpass
-sshpass -p "`cat password`" ssh-copy-id -o StrictHostKeyChecking=no root@localhost
+cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N "" ; sleep 3
+yum -y install sshpass ; sleep 3
+sshpass -p "`cat /root/password`" ssh-copy-id -o StrictHostKeyChecking=no root@localhost ; sleep 3
 cd
+
+
 
 
 ## useradd & sudoer
 useradd naim
 usermod -aG wheel naim
-echo "`cat password`"  | passwd --stdin naim
+echo "`cat /root/password`"  | passwd --stdin naim
 
 ## visudo
 sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
