@@ -3,22 +3,37 @@ yum -y install epel-release
 
 ## firewall 
 service firewalld stop
-chockonfig firrewalld off
+chckonfig firewalld off
 
 ## selinux
 setenforce 0
+sed -i 's/SELINUX=permissive/SELINUX=enforcing/g' /etc/selinux/config
 selinux off
-chronyd on
 
-estblish ssh keys 
-  >> cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N ""
-  >> yum -y install sshpass
-  >> sshpass -p 'password' ssh-copy-id -o StrictHostKeyChecking=no root@localhost
+## chrony
+yum -y install chrony
+service chronyd start
+chkconfig chronyd on
 
 
-useradd
-visudo
-vim 
-git
-hostname - for cluster mode
-/etc/hosts - for cluster mode 
+## establish ssh keys 
+cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N ""
+yum -y install sshpass
+sshpass -p "`cat passfile`" ssh-copy-id -o StrictHostKeyChecking=no root@localhost
+cd
+
+
+## useradd & sudoer
+useradd naim
+usermod -aG wheel naim
+echo "`cat passfile`"  | passwd --stdin naim
+
+
+## packages
+yum -y install vim wget git
+
+## reboot
+reboot
+
+## hostname - for cluster mode
+#/etc/hosts - for cluster mode 
