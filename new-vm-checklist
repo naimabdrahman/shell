@@ -1,12 +1,20 @@
-epel
-firewalld off
+## epel
+yum -y install epel-release
+
+## firewall 
+service firewalld stop
+chockonfig firrewalld off
+
+## selinux
+setenforce 0
 selinux off
 chronyd on
 
 estblish ssh keys 
-  >> ssh-keygen -f id_rsa -t rsa -N ""
+  >> cd ~/.ssh ; ssh-keygen -f id_rsa -t rsa -N ""
   >> yum -y install sshpass
-  >> sshpass -p 'password' ssh-copy-id root@localhost
+  >> sshpass -p 'password' ssh-copy-id -o StrictHostKeyChecking=no root@localhost
+
 
 useradd
 visudo
