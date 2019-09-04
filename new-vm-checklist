@@ -11,8 +11,7 @@ chkconfig firewalld off
 
 ## selinux off
 setenforce 0
-sed -i 's/SELINUX=permissive/SELINUX=enforcing/g' /etc/selinux/config
-
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 ## chrony
 yum -y install chrony
