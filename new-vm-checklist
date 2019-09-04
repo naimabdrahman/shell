@@ -3,12 +3,12 @@ yum -y install epel-release
 
 ## firewall 
 service firewalld stop
-chckonfig firewalld off
+chkconfig firewalld off
 
-## selinux
+## selinux off
 setenforce 0
 sed -i 's/SELINUX=permissive/SELINUX=enforcing/g' /etc/selinux/config
-selinux off
+
 
 ## chrony
 yum -y install chrony
