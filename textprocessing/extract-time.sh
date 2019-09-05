@@ -1,5 +1,5 @@
 ## get printable date from date/timestamp
-## usefulfor creating backup file based on timestamp
+## useful for creating backup file based on timestamp
 
 
 
@@ -12,3 +12,7 @@ date +"%Y-%m-%d"
 
 ## option 3
 #date +"%Y%m%d_%H%M%S"
+
+## option 4
+#date +%s
+
