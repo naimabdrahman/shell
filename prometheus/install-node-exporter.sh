@@ -1,4 +1,5 @@
-#install node exporter centos 7
+## install node exporter centos 7
+## version : node_exporter-0.18
 
 yum -y install wget
 
