@@ -30,10 +30,6 @@ echo -e "[Install]" >> /etc/systemd/system/node_exporter.service
 echo -e "WantedBy=default.target" >> /etc/systemd/system/node_exporter.service
 
 
-## tweak path
-mv /etc/systemd/system/multi-user.target.wants/node_exporter.service /usr/lib/systemd/system/
-
-
 
 ## enable service
 systemctl daemon-reload
