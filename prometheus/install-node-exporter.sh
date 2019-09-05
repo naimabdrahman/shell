@@ -4,13 +4,15 @@ yum -y install wget
 
 mkdir /root/dl
 cd /root/dl
-wget "https://github.com/prometheus/node_exporter/releases/download/0.11.0/node_exporter-0.11.0.linux-amd64.tar.gz"
+#wget "https://github.com/prometheus/node_exporter/releases/download/0.11.0/node_exporter-0.11.0.linux-amd64.tar.gz" #old
+wget "https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz"
 sleep 2
 
 cd /root
 mkdir /root/node_exporter
 cd /root/node_exporter
-tar -zxvf /root/dl/node_exporter-0.11.0.linux-amd64.tar.gz
+#tar -zxvf /root/dl/node_exporter-0.11.0.linux-amd64.tar.gz #old
+tar -zxvf /root/dl/node_exporter-0.18.1.linux-amd64.tar.gz 
 sleep 2
 
 
@@ -25,11 +27,15 @@ echo -e "" >> /etc/systemd/system/node_exporter.service
 echo -e "[Install]" >> /etc/systemd/system/node_exporter.service
 echo -e "WantedBy=default.target" >> /etc/systemd/system/node_exporter.service
 
-sleep 2
+
+## tweak path
+mv /etc/systemd/system/multi-user.target.wants/node_exporter.service /usr/lib/systemd/system/
+
+
+
+## enable service
 systemctl daemon-reload
-sleep 2
 systemctl enable node_exporter.service
-sleep 2
 systemctl start node_exporter.service
 
 
