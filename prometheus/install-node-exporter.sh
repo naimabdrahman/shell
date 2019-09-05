@@ -23,7 +23,8 @@ echo -e "Description=Node Exporter" >> /etc/systemd/system/node_exporter.service
 echo -e "">> /etc/systemd/system/node_exporter.service
 echo -e "[Service]" >> /etc/systemd/system/node_exporter.service
 echo -e "User=root">> /etc/systemd/system/node_exporter.service
-echo -e "ExecStart=/root/node_exporter/node_exporter" >> /etc/systemd/system/node_exporter.service
+#echo -e "ExecStart=/root/node_exporter/node_exporter" >> /etc/systemd/system/node_exporter.service #old
+echo -e "ExecStart=node_exporter/node_exporter-0.18.1.linux-amd64/node_exporter" >> /etc/systemd/system/node_exporter.service
 echo -e "" >> /etc/systemd/system/node_exporter.service
 echo -e "[Install]" >> /etc/systemd/system/node_exporter.service
 echo -e "WantedBy=default.target" >> /etc/systemd/system/node_exporter.service
