@@ -3,6 +3,7 @@
 vars=prometheus
 
 touch /etc/systemd/system/multi-user.target.wants/$vars.service
+#touch /etc/systemd/system/$vars.service
 
 echo -e "[Unit]" > /etc/systemd/system/$vars.service
 echo -e "Description=$vars server" >> /etc/systemd/system/$vars.service
@@ -16,7 +17,7 @@ echo -e "[Install]" >> /etc/systemd/system/$vars.service
 echo -e "WantedBy=multi-user.target" >> /etc/systemd/system/$vars.service
 
 
-## tweak path
+## tweak path for multi-user.target.wants
 mv /etc/systemd/system/multi-user.target.wants/$vars.service /usr/lib/systemd/system/
 
 
