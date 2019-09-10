@@ -30,6 +30,6 @@ curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rp
 
 ## Cert 
 #sudo EXTERNAL_URL="https://gitlab.example.com" yum install -y gitlab-ee
-#sudo EXTERNAL_URL="https://172.105.118.185" yum install -y gitlab-ee
+#sudo EXTERNAL_URL="https://IP" yum install -y gitlab-ee
 
 
