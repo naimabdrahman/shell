@@ -26,3 +26,22 @@ mv /etc/systemd/system/multi-user.target.wants/$vars.service /usr/lib/systemd/sy
 systemctl daemon-reload
 systemctl start $vars.service
 systemctl enable $vars.service
+
+
+
+
+
+
+
+
+
+## additional template below for reference
+#[Unit]
+#Description=Node Exporter
+#
+#[Service]
+#User=prometheus
+#ExecStart=/usr/bin/node_exporter
+#
+#[Install]
+#WantedBy=default.target
