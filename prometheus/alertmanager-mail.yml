@@ -1,0 +1,23 @@
+global:
+  resolve_timeout: 5m
+
+#templates:
+#- '/etc/alertmanager/*.tmpl'
+
+route:
+  receiver: alert-emailer
+  #group_by: ['alertname', 'priority']
+  group_by: ['alertname']
+
+
+receivers:
+- name: alert-emailer
+  email_configs:
+  - to: 'receiver@mail.com'
+    send_resolved: false
+    from: 'prometheus@relaymail.com'
+    smarthost: 'smtp.aduadu.com:587'
+    auth_username: 'prometheus@relaymail.com'
+    auth_password: 'insertpassword'
+    #auth_secret: 'prometheus@relaymail.com'
+    #auth_identity: 'prometheus@relaymail.com'
