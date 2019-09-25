@@ -1,0 +1,8 @@
+## passwordless sudo
+## password is declared out in the script/command
+echo Password | sudo -S -k <command>
+
+
+## sudo over thru tty 
+## error message : sudo: sorry, you must have a tty to run sudo
+ssh -t username@1.1.1.1 -t './sudoscript.sh'  ## replace 1.1.1.1 with IP 
