@@ -15,7 +15,7 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.12.0/$package
 sleep 2
 tar -zxvf $package.tar.gz
 mv $package /root/
-cd /root/$package/
+
 
 
 ## quick run prometheus to see if it is working ## not in used. service is created instead
