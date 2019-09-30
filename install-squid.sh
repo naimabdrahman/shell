@@ -25,10 +25,12 @@ blacklisted sites: /etc/squid/blacklisted_sites.acl
 "
 
 ## backup squid config
-cat /etc/squid/squid.conf > /etc/squid/squid.conf.backup`date +%s`
+cat /etc/squid/squid.conf > /etc/squid/squid.conf.bckup.`date +%s`
 
 ## new squid config
 cat >> /etc/squid/squid.conf <<EOL
+
+
 ## blacklisted sites
 acl bad_urls dstdomain "/etc/squid/blacklisted_sites.acl"
 http_access deny bad_urls
