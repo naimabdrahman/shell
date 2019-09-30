@@ -34,6 +34,14 @@ yum -y install kibana
 systemctl start kibana.service
 systemctl enable kibana.service
 
+## Tweaking kibana config and restart kibana service
+## take backup
+cat /etc/kibana/kibana.yml > /etc/kibana/kibana.yml.bckup.`date +%s`
+## update config via sed 
+sed -i 's/#server.port: 5601/server.port: 5601/' /etc/kibana/kibana.yml
+sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
+sed -i 's/#elasticsearch.hosts:/elasticsearch.hosts/g' /etc/kibana/kibana.yml
+
 
 ## Install and Configure Logstash
 yum -y install logstash
