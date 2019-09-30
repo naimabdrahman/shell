@@ -31,8 +31,8 @@ systemctl enable elasticsearch
 
 ## Install and Configure Kibana
 yum -y install kibana
-systemctl start kibana
-systemctl enable kibana
+systemctl start kibana.service
+systemctl enable kibana.service
 
 
 ## Install and Configure Logstash
