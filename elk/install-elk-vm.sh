@@ -29,7 +29,18 @@ yum -y install elasticsearch
 systemctl start elasticsearch
 systemctl enable elasticsearch
 
+## Install and Configure Kibana
+yum -y install kibana
+systemctl start kibana
+systemctl enable kibana
 
+
+## Install and Configure Logstash
+yum -y install logstash
+systemctl start logstash
+systemctl enable logstash
+
+## firewalld configuration
 
 ## notes
 echo -e "
@@ -44,24 +55,19 @@ If your system has less memory, you can configure it to use small megabytes of r
 
 -Xms256m
 -Xmx512m
+
 "
 
+## notes
+echo -e "
 
-## Install and Configure Kibana
-yum -y install kibana
-systemctl start kibana
-systemctl enable kibana
-echo -e "curl http://127.0.0.1:9200 to validate"
+#######################################
+5601 (Kibana web interface)
+9200 (Elasticsearch JSON interface)
+5044 (Logstash Beats interface, receives logs from Beats such as Filebeat)
+#######################################
 
+"
 
-## Install and Configure Logstash
-yum -y install logstash
-systemctl start logstash
-systemctl enable logstash
-
-
-
-
-## firewalld configuration
 
 
