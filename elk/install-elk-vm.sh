@@ -39,7 +39,7 @@ cat /etc/kibana/kibana.yml > /root/kibana.yml.bckup.`date +%s`
 ## update config via sed and restart 
 sed -i 's/#server.port: 5601/server.port: 5601/' /etc/kibana/kibana.yml
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
-sed -i 's/#elasticsearch.hosts: ["http://localhost:9200"]/elasticsearch.hosts: ["http://localhost:9200"]/g' /etc/kibana/kibana.yml
+sed -i 's/#elasticsearch.hosts:/elasticsearch.hosts:/g' /etc/kibana/kibana.yml
 sleep 5
 systemctl restart kibana.service
 
