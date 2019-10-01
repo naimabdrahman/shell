@@ -1,4 +1,5 @@
 ## install elk in centos 7 ##
+## tested ##
 
 ## install java
 yum -y install java-openjdk-devel java-openjdk
@@ -46,9 +47,6 @@ sleep 5
 systemctl start kibana.service
 systemctl enable kibana.service
 
-
-
-
 ## Install and Configure Logstash
 yum -y install logstash
 systemctl start logstash
@@ -82,7 +80,6 @@ echo -e "
 #######################################
 
 "
-
 
 ## end
 
