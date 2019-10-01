@@ -27,21 +27,25 @@ yum -y install elasticsearch
 systemctl start elasticsearch
 systemctl enable elasticsearch
 
-## Install and Configure Kibana
+## Install Kibana
 yum -y install kibana
-systemctl start kibana.service
-systemctl enable kibana.service
+#systemctl start kibana.service
+#systemctl enable kibana.service
 sleep 5
 
-## Tweaking kibana config and restart kibana service
+## Tweaking kibana config and start kibana service ##
+
 ## take backup
 cat /etc/kibana/kibana.yml > /root/kibana.yml.bckup.`date +%s`
-## update config via sed and restart 
+
+## update config via sed and start 
 sed -i 's/#server.port: 5601/server.port: 5601/' /etc/kibana/kibana.yml
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
 sed -i 's/#elasticsearch.hosts:/elasticsearch.hosts:/g' /etc/kibana/kibana.yml
 sleep 5
-systemctl restart kibana.service
+systemctl start kibana.service
+systemctl enable kibana.service
+
 
 
 
