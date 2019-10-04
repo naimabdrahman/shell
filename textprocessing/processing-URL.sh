@@ -56,6 +56,7 @@ mkdir -p $SQUIDBACKUP
 cat $SQUIDPATH/$SQUIDURLFILE > $SQUIDBACKUP/$SQUIDURLFILE.bckup.`date +%s`
 
 ## remove squid  blocked file more than 90 days
+find $SQUIDBACKUP -type f -mtime +90 -delete
 
 
 ## transfer new list into squid and remove dedup and reload service
