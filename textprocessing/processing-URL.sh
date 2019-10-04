@@ -4,27 +4,28 @@
 ## setting up path and variables
 MYPATH=`pwd`
 STAGING=$MYPATH/staging
-BCKUP=$MYPATH/bckup
 LIST=$MYPATH/list
 SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <UPDATE ACCORDINGLY>
-SOURCELIST=listofbadurlexample.txt ## <UPDATE ACCORDINGLY>
-SQUIDPATH=/etc/squid ## <UPDATE ACCORDINGLY>
-SQUIDBACKUP=$SQUIDPATH/bckup ## <UPDATE ACCORDINGLY>
 
+SOURCELIST=listofbadurlexample.txt   ## <UPDATE ACCORDINGLY>
+SOURCELIST2=listofbadurlexample2.txt ## <UPDATE ACCORDINGLY>
+
+SQUIDPATH=/etc/squid/
+SQUIDBACKUP=$SQUIDPATH/bckup         ## <UPDATE ACCORDINGLY>
 SQUIDURLFILE=blacklisted_sites.acl
 
 
 ## preparation - create dir
 mkdir -p $STAGING
-mkdir -p $BCKUP
 mkdir -p $LIST
 
 
-## preparation - download list
-for x in $SOURCELIST; do wget -P $LIST $SOURCEPATH/$SOURCELIST ; done
-
+## preparation - download list       ## <UPDATE ACCORDINGLY BELOW>
+wget -P $LIST $SOURCEPATH/$SOURCELIST
+wget -P $LIST $SOURCEPATH/$SOURCELIST2
 
 ## process list
+echo "" > list-stg.txt
 for x in $LIST/*.txt
 do cat $x\
  | sed -e 's/\[dot\]/./g'\
@@ -32,7 +33,7 @@ do cat $x\
  | sed -e 's/\[//g'\
  | sed -e 's/\]//g'\
  | sed -e 's/hxxp/http/g'\
- > $STAGING/list-stg.txt
+ >> $STAGING/list-stg.txt
 done
 
 
@@ -50,13 +51,18 @@ To test pls check the file :  $STAGING/list-stg.txt
 
 ## push to squid - switched on ##
 
-# take squid blocked file bckup
+## backup squid blocked file
 mkdir -p $SQUIDBACKUP
 cat $SQUIDPATH/$SQUIDURLFILE > $SQUIDBACKUP/$SQUIDURLFILE.bckup.`date +%s`
 
-## transfer new list into squid and remove dedup
+## remove squid  blocked file more than 90 days
+
+
+## transfer new list into squid and remove dedup and reload service
 cat $STAGING/list-stg.txt >> $SQUIDPATH/$SQUIDURLFILE
-sort $SQUIDPATH/$SQUIDURLFILE | uniq -u > $SQUIDPATH/$SQUIDURLFILE.tmp
+sort $SQUIDPATH/$SQUIDURLFILE | uniq  > $SQUIDPATH/$SQUIDURLFILE.tmp
 mv $SQUIDPATH/$SQUIDURLFILE.tmp  $SQUIDPATH/$SQUIDURLFILE
 service squid reload
+
+
 
