@@ -1,21 +1,22 @@
 ## Processing and cleaning bad URL list
 ## list.txt shouldve been added into the 'list' dir
 
-
-
 ## setting up path
 MYPATH=`pwd`
 STAGING=$MYPATH/staging
 BCKUP=$MYPATH/bckup
 LIST=$MYPATH/list
+SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <update accordingly>
+SOURCELIST=listofbadurlexample.txt ## <Update accordingly>
 
-
-
-## preparation
-
+## preparation - create dir
 mkdir -p $STAGING
 mkdir -p $BCKUP
 mkdir -p $LIST
+
+
+## preparation - download list
+for x in $SOURCELIST; do wget -P $LIST $SOURCEPATH/$SOURCELIST ; done
 
 
 ## process list
