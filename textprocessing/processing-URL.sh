@@ -19,7 +19,15 @@ mkdir -p $LIST
 
 
 ## process list
-for x in $LIST/*.txt ; do cat $x | sed -e 's/\[dot\]/./g'  | sed -e 's/\(dot\)/./g' | sed -e 's/\[//g' | sed -e 's/\]//g' | sed -e 's/hxxp/http/g' > $STAGING/list-stg.txt ; done
+for x in $LIST/*.txt
+do cat $x\
+ | sed -e 's/\[dot\]/./g'\
+ | sed -e 's/\(dot\)/./g'\
+ | sed -e 's/\[//g'\
+ | sed -e 's/\]//g'\
+ | sed -e 's/hxxp/http/g'\
+ > $STAGING/list-stg.txt
+done
 
 
 ## cleaning list - remove dedup
@@ -31,4 +39,5 @@ mv $STAGING/list-stg.txt.temp $STAGING/list-stg.txt
 echo -e "
 To test pls check the file :  $STAGING/list-stg.txt
 "
+
 
