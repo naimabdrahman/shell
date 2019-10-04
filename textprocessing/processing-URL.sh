@@ -39,5 +39,3 @@ mv $STAGING/list-stg.txt.temp $STAGING/list-stg.txt
 echo -e "
 To test pls check the file :  $STAGING/list-stg.txt
 "
-
-
