@@ -5,8 +5,8 @@
 MYPATH=`pwd`
 STAGING=$MYPATH/staging
 LIST=$MYPATH/list
-SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <UPDATE ACCORDINGLY>
 
+SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <UPDATE ACCORDINGLY>
 SOURCELIST=listofbadurlexample.txt   ## <UPDATE ACCORDINGLY>
 SOURCELIST2=listofbadurlexample2.txt ## <UPDATE ACCORDINGLY>
 
