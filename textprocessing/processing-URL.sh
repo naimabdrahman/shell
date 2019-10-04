@@ -6,8 +6,8 @@ MYPATH=`pwd`
 STAGING=$MYPATH/staging
 BCKUP=$MYPATH/bckup
 LIST=$MYPATH/list
-SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <update accordingly>
-SOURCELIST=listofbadurlexample.txt ## <Update accordingly>
+SOURCEPATH=https://raw.githubusercontent.com/naimabdrahman/shell/master/textprocessing/ ## <UPDATE ACCORDINGLY>
+SOURCELIST=listofbadurlexample.txt ## <UPDATE ACCORDINGLY>
 SQUIDPATH=/etc/squid ## <UPDATE ACCORDINGLY>
 SQUIDBACKUP=$SQUIDPATH/bckup ## <UPDATE ACCORDINGLY>
 
