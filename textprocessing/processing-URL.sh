@@ -46,10 +46,11 @@ echo -e "
 To test pls check the file :  $STAGING/list-stg.txt
 "
 
+####################################################################################
 
-## push to squid - not switched on ##
+## push to squid - switched on ##
 
-# take bckup
+# take squid blocked file bckup
 mkdir -p $SQUIDBACKUP
 cat $SQUIDPATH/$SQUIDURLFILE > $SQUIDBACKUP/$SQUIDURLFILE.bckup.`date +%s`
 
@@ -58,5 +59,4 @@ cat $STAGING/list-stg.txt >> $SQUIDPATH/$SQUIDURLFILE
 sort $SQUIDPATH/$SQUIDURLFILE | uniq -u > $SQUIDPATH/$SQUIDURLFILE.tmp
 mv $SQUIDPATH/$SQUIDURLFILE.tmp  $SQUIDPATH/$SQUIDURLFILE
 service squid reload
-
 
