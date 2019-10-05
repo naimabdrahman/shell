@@ -19,8 +19,8 @@ SQUIDURLFILE=blacklisted_sites.acl
 mkdir -p $STAGING
 mkdir -p $LIST
 
-## preparation - remove old list more than 7 days 
-find $LIST -type f -mtime +7 -delete
+## preparation - remove downloaded old list 
+rm -rf $LIST/*
 
 ## preparation - download new list       ## <UPDATE ACCORDINGLY BELOW>
 wget -P $LIST $SOURCEPATH/$SOURCELIST
