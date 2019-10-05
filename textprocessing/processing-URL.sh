@@ -27,7 +27,7 @@ wget -P $LIST $SOURCEPATH/$SOURCELIST
 wget -P $LIST $SOURCEPATH/$SOURCELIST2
 
 ## process list
-echo "" > list-stg.txt
+echo "" > $STAGING/list-stg.txt
 for x in $LIST/*txt*
 do cat $x\
  | sed -e 's/\[dot\]/./g'\
