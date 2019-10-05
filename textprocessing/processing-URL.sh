@@ -19,6 +19,8 @@ SQUIDURLFILE=blacklisted_sites.acl
 mkdir -p $STAGING
 mkdir -p $LIST
 
+## preparation - remove old list mode than 7 days 
+find $LIST -type f -mtime +7 -delete
 
 ## preparation - download list       ## <UPDATE ACCORDINGLY BELOW>
 wget -P $LIST $SOURCEPATH/$SOURCELIST
@@ -26,7 +28,7 @@ wget -P $LIST $SOURCEPATH/$SOURCELIST2
 
 ## process list
 echo "" > list-stg.txt
-for x in $LIST/*.txt
+for x in $LIST/*txt*
 do cat $x\
  | sed -e 's/\[dot\]/./g'\
  | sed -e 's/\(dot\)/./g'\
