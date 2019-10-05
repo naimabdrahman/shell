@@ -39,14 +39,16 @@ sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
 ## packages
 yum -y install vim wget git bind-utils net-tools
 
-
 ## fail2ban
 yum -y install fail2ban
 service fail2ban start
 chkconfig fail2ban on
 
-
-# remove unwanted files and dir
+## PermitRootLogin no  ---> switched on
+cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/'g /etc/ssh/sshd_config 
+ 
+## remove unwanted files and dir
 rm -rf /root/git
 rm -rf /root/password
 
