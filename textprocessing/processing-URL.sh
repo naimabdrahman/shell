@@ -22,7 +22,7 @@ mkdir -p $LIST
 ## preparation - remove old list mode than 7 days 
 find $LIST -type f -mtime +7 -delete
 
-## preparation - download list       ## <UPDATE ACCORDINGLY BELOW>
+## preparation - download new list       ## <UPDATE ACCORDINGLY BELOW>
 wget -P $LIST $SOURCEPATH/$SOURCELIST
 wget -P $LIST $SOURCEPATH/$SOURCELIST2
 
