@@ -1,0 +1,30 @@
+## elasticsearch cluster template
+
+cluster.name: master-node
+node.name: elk-tst1
+node.master: true
+node.data: true
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 192.168.136.142
+http.port: 9200
+discovery.seed_hosts: ["192.168.136.142", "192.168.136.143", "192.168.136.130"]
+cluster.initial_master_nodes: ["192.168.136.142", "192.168.136.143", "192.168.136.130"]
+xpack.security.enabled: false
+
+node2 &3 config
+
+cluster.name: master-node
+node.name: elk-tst2
+node.master: true
+node.data: true
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 192.168.136.143
+http.port: 9200
+discovery.seed_hosts: ["192.168.136.142", "192.168.136.143", "192.168.136.130"]
+cluster.initial_master_nodes: ["192.168.136.142", "192.168.136.143", "192.168.136.130"]
+xpack.security.enabled: false
+
+
+
