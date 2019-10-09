@@ -1,3 +1,6 @@
 curl http://elk1:9200/_cluster/health?pretty
 curl http://elk1:9200/_cat/nodes?v
 curl http://elk1:9200/_cat/master?v
+
+
+rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
