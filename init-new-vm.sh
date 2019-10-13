@@ -26,28 +26,28 @@ sshpass -p "`cat /root/password`" ssh-copy-id -o StrictHostKeyChecking=no root@l
 cd
 
 
-
-
 ## useradd & sudoer
 useradd naim
 usermod -aG wheel naim
 echo "`cat /root/password`"  | passwd --stdin naim
 
+
 ## visudo
 sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
 
+
 ## packages
 yum -y install vim wget git bind-utils net-tools
+
 
 ## fail2ban
 yum -y install fail2ban
 service fail2ban start
 chkconfig fail2ban on
 
+
 ## PermitRootLogin no  ---> switched on
-
-PERMITROOT=on
-
+PERMITROOT=on ## on or off <Update accordingly>
 if test "$PERMITROOT" = "on" 
 then 
  cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
@@ -62,8 +62,10 @@ fi
 rm -rf /root/git
 rm -rf /root/password
 
+
 ## reboot
 reboot
+
 
 ## hostname - for cluster mode
 #/etc/hosts - for cluster mode 
