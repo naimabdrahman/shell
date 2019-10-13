@@ -20,12 +20,13 @@ systemctl enable jenkins
 
 ## firewall config off
 FW=off
+
 if test "$FW" = "on" 
 then 
-    firewall-cmd --permanent --zone=public --add-port=8080/tcp
-	firewall-cmd --reload
+  firewall-cmd --permanent --zone=public --add-port=8080/tcp
+  firewall-cmd --reload
 else 
-    echo "FW not on"
+  echo "FW is not on"
 fi
 
 
