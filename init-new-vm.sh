@@ -45,8 +45,18 @@ service fail2ban start
 chkconfig fail2ban on
 
 ## PermitRootLogin no  ---> switched on
-cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
-sed -i 's/PermitRootLogin yes/PermitRootLogin no/'g /etc/ssh/sshd_config 
+
+PERMITROOT=on
+
+if test "$PERMITROOT" = "on" 
+then 
+ cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
+ sed -i 's/PermitRootLogin yes/PermitRootLogin no/'g /etc/ssh/sshd_config
+else 
+  echo -e "$PERMITROOT is not on"
+fi
+ 
+ 
  
 ## remove unwanted files and dir
 rm -rf /root/git
