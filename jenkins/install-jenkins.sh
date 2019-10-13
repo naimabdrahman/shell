@@ -27,3 +27,10 @@ then
 else 
     echo "FW not on"
 fi
+
+
+## info
+IP = nmcli  device show | grep -i IP4.ADDRESS | grep -v 127.0.0.1 | grep -v 192.168 | awk -F: '{print $2}' | awk -F \/ '{print $1}' | sed 's/                         //g'
+echo -e "pls browse to $IP:8080 to jenkins"
+
+
