@@ -28,8 +28,9 @@ curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rp
 
 
 
-## Cert 
+## Cert and installation
 #sudo EXTERNAL_URL="https://gitlab.example.com" yum install -y gitlab-ee
 #sudo EXTERNAL_URL="https://IP" yum install -y gitlab-ee
-
+IP=`nmcli  device show | grep -i IP4.ADDRESS | grep -v 127.0.0.1 | grep -v 192.168 | awk -F: '{print $2}' | awk -F \/ '{print $1}' | sed 's/                         //g'`
+sudo EXTERNAL_URL="https://$IP" yum install -y gitlab-ee
 
