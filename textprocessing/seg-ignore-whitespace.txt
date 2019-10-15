@@ -1,0 +1,5 @@
+\s* = ignore whitespace
+
+sed -i 's/PASS_MIN_DAYS\s*0/PASS_MIN_DAYS 7/g'
+
+
