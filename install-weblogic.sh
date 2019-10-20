@@ -1,16 +1,20 @@
 ## install Oracle Weblogic Centos 7
 ## WIP
 
+## install java jdk ##
 
-
-## install java jdk
 ## install java - supereasy
-sudo yum -y install java-sdk
+#sudo yum -y install java-sdk
+
 ## install java - easy
-#yum -y install java-1.8.0-openjdk
-#yum -y install java-1.8.0-openjdk-devel
+#sudo yum -y install java-1.8.0-openjdk
+#sudo yum -y install java-1.8.0-openjdk-devel
 
+## install java - easy 11
+sudo yum -y install java-11-openjdk java-11-openjdk-devel
 
+## install java - customized
+#echo -e " pls download jdk-8u131-linux-x64.rpm "
 
 
 ## configure path
