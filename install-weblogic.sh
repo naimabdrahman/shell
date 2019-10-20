@@ -56,3 +56,4 @@ EOL
 
 ## installation /
 java -jar /home/naim/wls/oracle/fmw_12.1.3.0.0_wls.jar -silent -responseFile /home/naim/wls/wls.rsp -invPtrLoc /home/naim/wls/oraInst.loc
+
