@@ -38,7 +38,7 @@ java -cp $HOME/jmeter/lib/ext/plugins-manager.jar org.jmeterplugins.repository.P
 #$HOME/jmeter/bin/jmeter-server
 
 # Optional - install Maven
-yum install maven
+yum -y install maven
 #curl http://ftp.wayne.edu/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz > $HOME/apache-maven-3.5.2-bin.tar.gz
 #tar -xvzf $HOME/apache-maven-3.5.2-bin.tar.gz
 #ln -s $HOME/apache-maven-3.5.2 $HOME/maven
