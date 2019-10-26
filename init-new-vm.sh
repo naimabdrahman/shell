@@ -66,8 +66,8 @@ rm -rf /root/git
 rm -rf /root/password
 
 
-## reboot
-reboot
+## reboot off
+#reboot
 
 
 ## hostname - for cluster mode
