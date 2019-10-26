@@ -56,8 +56,11 @@ else
   echo -e "PERMITROOT is not on"
 fi
  
+
+## restart sshd
+systemctl reload sshd
  
- 
+
 ## remove unwanted files and dir
 rm -rf /root/git
 rm -rf /root/password
