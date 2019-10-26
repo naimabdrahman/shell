@@ -57,7 +57,7 @@ else
 fi
  
 
-## restart sshd
+## reload sshd
 systemctl reload sshd
  
 
