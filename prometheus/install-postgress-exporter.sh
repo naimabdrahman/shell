@@ -17,6 +17,11 @@ tar -zxvf /root/dl/postgres_exporter_v0.6.0_linux-amd64.tar.gz
 sleep 2
 
 
+## quick run
+# mysql example : export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/lib/mysql/mysql.sock)/'
+export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable" 
+/root/postgres_exporter/postgres_exporter_v0.6.0_linux-amd64/postgres_exporter
+
 ## create service
 touch /etc/systemd/system/postgres_exporter.service
 cat > /etc/systemd/system/postgres_exporter.service <<EOL
@@ -33,9 +38,9 @@ EOL
 
 
 ## enable service
-systemctl daemon-reload
-systemctl enable postgres_exporter.service
-systemctl start postgres_exporter.service
+#systemctl daemon-reload
+#systemctl enable postgres_exporter.service
+#systemctl start postgres_exporter.service
 
 
 echo -e "\n\n\nPls browse to http://your_server_ip:postgres_exporter/metrics\n\n\n"
