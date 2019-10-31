@@ -20,6 +20,11 @@ sleep 2
 export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable" 
 # /root/postgres_exporter/postgres_exporter_v0.6.0_linux-amd64/postgres_exporter &
 
+## environment
+cat >> /etc/environment << EOL
+export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable"
+EOL
+
 ## create service
 touch /etc/systemd/system/postgres_exporter.service
 cat > /etc/systemd/system/postgres_exporter.service <<EOL
