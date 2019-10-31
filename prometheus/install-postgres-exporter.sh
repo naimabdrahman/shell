@@ -24,6 +24,8 @@ export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?
 cat >> /etc/environment << EOL
 export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable"
 EOL
+source /etc/environment
+
 
 ## create service
 touch /etc/systemd/system/postgres_exporter.service
