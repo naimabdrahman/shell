@@ -43,4 +43,4 @@ EOL
 #systemctl start postgres_exporter.service
 
 
-echo -e "\n\n\nPls browse to http://your_server_ip:postgres_exporter/metrics\n\n\n"
+echo -e "\n\n\nPls browse to http://your_server_ip:9187/metrics\n\n\n"
