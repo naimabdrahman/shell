@@ -20,7 +20,7 @@ python3 get-pip.py --user
 ## installation
 pip3 install prometheus-pgbouncer-exporter
 
-config file
+## config file 
 mkdir -p /opt/pgbouncer_exporter
 touch /opt/pgbouncer_exporter/config.yml
 cat > /opt/pgbouncer_exporter/config.yml << EOL
@@ -67,3 +67,10 @@ EOL
 ## quick run
 #pgbouncer-exporter --config ./config.yml
 pgbouncer-exporter --config /opt/pgbouncer_exporter/config.yml
+
+
+## service
+
+
+
+## firewall
