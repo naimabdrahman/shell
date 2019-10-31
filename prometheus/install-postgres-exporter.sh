@@ -1,5 +1,5 @@
 ## install postgres exporter centos 7
-## version : node_exporter-0.18
+## version : postgres_exporter_v0.6.0
 
 ## preparation
 yum -y install wget
