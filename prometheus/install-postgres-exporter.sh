@@ -17,10 +17,12 @@ sleep 2
 
 ## quick run
 # mysql example : export DATA_SOURCE_NAME='mysqld_exporter:a_password@unix(/var/lib/mysql/mysql.sock)/'
+# template source ==> psql postgresql://username:password@localhost:5432/mydb
 export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable" 
 # /root/postgres_exporter/postgres_exporter_v0.6.0_linux-amd64/postgres_exporter &
 
 ## environment
+# template source ==> psql postgresql://username:password@localhost:5432/mydb
 cat >> /etc/environment << EOL
 export DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable"
 EOL
