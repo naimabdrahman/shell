@@ -1,4 +1,5 @@
 ## install postgres exporter centos 7
+## reference https://github.com/wrouesnel/postgres_exporter
 ## version : postgres_exporter_v0.6.0
 
 ## preparation
