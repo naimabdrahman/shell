@@ -25,7 +25,7 @@ sleep 2
 
 
 ## create and enable service ==> switched off
-func_create_service(){
+func_create_service_haproxy_exp(){
 touch /etc/systemd/system/haproxy_exporter.service
 cat > /etc/systemd/system/haproxy_exporter.service <<EOL
 [Unit]
