@@ -37,7 +37,7 @@ sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
 
 
 ## packages
-yum -y install vim wget git bind-utils net-tools
+yum -y install vim wget git bind-utils net-tools lsof
 
 
 ## fail2ban
