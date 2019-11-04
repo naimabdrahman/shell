@@ -64,6 +64,18 @@ func_pgb_opt2(){
 }
 
 
+## option3 : switched off
+## this is only for ubuntu os!!!
+
+func_pgb_opt3(){
+  wget https://www.cbaines.net/projects/prometheus-pgbouncer-exporter/releases/prometheus-pgbouncer-exporter_1.2_all.deb
+  dpkg -i prometheus-pgbouncer-exporter_1.2_all.deb
+  apt --fix-broken install
+  dpkg -i prometheus-pgbouncer-exporter_1.2_all.deb
+
+  systemctl start prometheus-pgbouncer-exporter.service
+  systemctl enable prometheus-pgbouncer-exporter.service
+}
 
 
 ## service
