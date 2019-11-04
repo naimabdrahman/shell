@@ -2,25 +2,7 @@
 ## tested on ubuntu 18.04
 ## Original steps from https://github.com/spreaker/prometheus-pgbouncer-exporter
 
-
-
-
-## preparation - option 2 ##
-
-## option 1
-#apt-get update ; apt-get -y install python3-pip  
-
-## option 2
-curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-python3 get-pip.py --user
-
-
-
-
-## installation
-pip3 install prometheus-pgbouncer-exporter
-
-## config file 
+## preparation : prepare config file
 mkdir -p /opt/pgbouncer_exporter
 touch /opt/pgbouncer_exporter/config.yml
 cat > /opt/pgbouncer_exporter/config.yml << EOL
@@ -63,10 +45,25 @@ pgbouncers:
       pool_id: 2
 EOL
 
+## option 1 : docker ==> switched on
+## reference : https://github.com/spreaker/prometheus-pgbouncer-exporter
+func_pgb_opt1(){
+  
+  #docker run --net=host -dit spreaker/prometheus-pgbouncer-exporter
+  docker run --net=host -v /opt/pgbouncer_exporter/config.yml:/etc/pgbouncer-exporter/config.yml -dit spreaker/prometheus-pgbouncer-exporter
+}
+func_pgb_opt1
 
-## quick run
-#pgbouncer-exporter --config ./config.yml
-pgbouncer-exporter --config /opt/pgbouncer_exporter/config.yml
+
+## option2 : switched off
+## reference : https://github.com/spreaker/prometheus-pgbouncer-exporter
+func_pgb_opt2(){
+  ## try to do this in venv
+  pip3 install prometheus-pgbouncer-exporter
+  pgbouncer-exporter --config /opt/pgbouncer_exporter/config.yml
+}
+
+
 
 
 ## service
