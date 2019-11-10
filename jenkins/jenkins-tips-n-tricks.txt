@@ -1,0 +1,3 @@
+## in /etc/systemd/system/multi-user.target.wants/docker.service
+## configure entry below to use docker plugin 
+ExecStart=/usr/bin/dockerd -H tcp://127.0.0.1:4243 -H unix:///var/run/docker.sock
