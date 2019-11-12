@@ -1,3 +1,5 @@
+## install PostgreSQL 
+
 ## install PostgreSQL 9.2 on centos 7 ==> switched off
 
 func_install_postgres9.2(){
