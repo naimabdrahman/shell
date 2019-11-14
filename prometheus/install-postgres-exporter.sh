@@ -29,6 +29,10 @@ sleep 2
 #EOL
 #source /etc/environment
 
+## optional via docker ==> switched off
+#docker run -dit --rm --name=exporter-pg  --net=host -e DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/postgres?sslmode=disable" wrouesnel/postgres_exporter
+
+
 
 ## create service
 touch /etc/systemd/system/postgres_exporter.service
@@ -50,6 +54,9 @@ EOL
 systemctl daemon-reload
 systemctl enable postgres_exporter.service
 systemctl start postgres_exporter.service
+
+
+
 
 
 echo -e "\n\n\nPls browse to http://your_server_ip:9187/metrics\n\n\n"
