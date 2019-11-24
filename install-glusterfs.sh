@@ -13,9 +13,8 @@
 
 
 # using below for disk creation
-for x in `cat list` ; do ssh $x 'mkdir /data' ; done
-for x in `cat list` ; do ssh $x 'mkdir /data/brick1' ; done
-for x in `cat list` ; do ssh $x 'mkdir /data/brick1/gv1' ; done
+#for x in `cat list` ; do ssh $x 'mkdir /data' ; done
+for x in `cat list` ; do ssh $x 'mkdir -p /data/brickgv1' ; done
 
 
 # install gluster
@@ -39,22 +38,27 @@ ssh node3 'gluster peer probe node2'
 for x in `cat list` ; do ssh $x 'gluster peer status' ; done
 
 
-# Set up a GlusterFS volume
-gluster volume create gv1 replica 3 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force #3 replicas
+## Set up a GlusterFS volume ==> 3 replicas are used
+
+#gluster volume create gv1 replica 3 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force #3 replicas
+gluster volume create gv1 replica 3 node1:/data/brickgv1 node2:/data/brickgv1 node3:/data/brickgv1 force #3 replicas
+
 #gluster volume create gv1 replica 3 arbiter 1 node1:/data/brick1/gv1 node2:/data/brick1/gv1 node3:/data/brick1/gv1 force #3 replicas (with 1 arbiter)
+#gluster volume create gv1 replica 3 arbiter 1 node1:/data/brickgv1 node2:/data/brickgv1 node3:/data/brickgv1 force #3 replicas (with 1 arbiter)
+
 gluster volume start gv1
 gluster volume info
 
-#Testing # Remove the comment out to use the test
-mkdir /mnt/temp
-mount -t glusterfs node1:/gv1 /mnt/temp
-for ((x=1; x<100; x++)) ; do touch /mnt/temp/file$x ; done # creating files
-for x in `cat list` ; do ssh $x 'ls /data/brick1/gv1' ; done # checking if files exist in other hosts 
-echo -e "\n\nPls unmount and remove /mnt/temp after the test\n\n"
+## Testing / client setting # Remove the comment out to use the test
+#mkdir /mnt/temp
+#mount -t glusterfs node1:/gv1 /mnt/temp
+#for ((x=1; x<100; x++)) ; do touch /mnt/temp/file$x ; done # creating files
+#for x in `cat list` ; do ssh $x 'ls /data/brickgv1' ; done # checking if files exist in other hosts 
+#echo -e "\n\nPls unmount and remove /mnt/temp after the test\n\n"
 
 
-# To add failover to glusterfs, add entry below in a client fstab (/etc/fstab) without the '#'
-# node1:/gv1 /mnt/temp glusterfs defaults,_netdev,backupvolfile-server=node2,log-level=WARNING,log-file=/var/log/gluster.log 0 0
+## To add failover to glusterfs, add entry below in a client fstab (/etc/fstab) without the '#'
+#node1:/gv1 /mnt/temp glusterfs defaults,_netdev,backupvolfile-server=node2,log-level=WARNING,log-file=/var/log/gluster.log 0 0
 
 
 
