@@ -4,3 +4,7 @@ curl http://elk1:9200/_cat/master?v
 
 
 rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
+
+
+
+# https://www.hugeserver.com/kb/how-secure-kibana-nginx-centos/
