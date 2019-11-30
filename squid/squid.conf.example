@@ -5,7 +5,7 @@ acl localnet src fc00::/7       # RFC 4193 local private network range
 acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 
 acl lan	src 192.168.1.0/24
-acl badurl dstdomain "/etc/squid/badsites.txt"
+acl badurl dstdomain "/etc/squid/badsites.txt"  ## acl filter in textfile
 
 
 acl SSL_ports port 443
@@ -30,10 +30,10 @@ http_access allow localhost manager
 http_access deny manager
 
 
-
+#http_access deny badurl ## option 1 filtering
 http_access allow localnet
 http_access allow localhost
-http_access allow lan !badurl
+http_access allow lan !badurl ## option 2 filtering
 
 http_access deny all
 
