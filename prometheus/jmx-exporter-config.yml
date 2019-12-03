@@ -1,0 +1,10 @@
+startDelaySeconds: 0
+#hostPort: x.x.x.x:9901
+username:
+password:
+jmxUrl: service:jmx:rmi:///jndi/rmi://x.x.x.x:9901/jmxrmi
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false
+rules:
+  - pattern: ".*java*"
