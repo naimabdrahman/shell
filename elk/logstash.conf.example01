@@ -1,0 +1,18 @@
+input {
+  file {
+    type =>  " secure_log" 
+    path =>  " /var/log/secure" 
+  }
+}
+filter {
+  grok {
+    add_tag =>  [ " sshd_fail"  ]
+    match =>  { " message"  =>  " Failed %{WORD:sshd_auth_type} for %{USERNAME:sshd_invalid_user} from %{IP:sshd_client_ip} port %{NUMBER:sshd_port} %{GREEDYDATA:sshd_protocol}"  }
+  }
+}
+
+output {
+  elasticsearch {
+    index =>  " sshd_fail-%{+YYYY.MM}" 
+  }
+}
