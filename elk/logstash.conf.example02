@@ -1,0 +1,16 @@
+## multiple input
+
+input {
+	
+	file {
+		path 	=> 	[
+			"//server_1/Logs/*",
+			"//server_2/Logs/*",
+			"//server_2/Logs/*",
+			"//server_2/Logs/*",
+			"//server_2/Logs/*"
+		]					
+	start_position 	=> "beginning"
+	sincedb_path => "E:/LS/logstash-2.0.0/.sincedb"
+}
+} # END INPUT
