@@ -43,3 +43,5 @@ $InputRunFileMonitor
 #
 # check for new lines every 10 seconds
 $InputFilePollingInterval 10
+
+*.* @@<IP of rsyslog server / remote host>:514
