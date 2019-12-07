@@ -1,1 +1,44 @@
+## reference => https://ubuntuforums.org/archive/index.php/t-1690234.html
+## reference => https://rsyslog-5-8-6-doc.neocities.org/imfile.html
 
+
+
+$ModLoad imfile
+$InputFileName /var/log/apache2/access.log
+$InputFileTag apache-access:
+$InputFileStateFile stat-apache-access
+$InputFileSeverity info
+$InputRunFileMonitor
+
+
+
+
+$ModLoad imfile
+$InputFileName /var/log/apache2/error.log
+$InputFileTag apache-errors:
+$InputFileStateFile stat-apache-error
+$InputFileSeverity error
+$InputRunFileMonitor
+
+
+
+
+
+$ModLoad imfile #
+needs to be done just once
+# File 1
+$InputFileName /path/to/file1
+$InputFileTag tag1:
+$InputFileStateFile stat-file1
+$InputFileSeverity error
+$InputFileFacility local7
+$InputRunFileMonitor
+# File 2
+$InputFileName /path/to/file2
+$InputFileTag tag2:
+$InputFileStateFile stat-file2
+$InputRunFileMonitor
+# ... and so on ...
+#
+# check for new lines every 10 seconds
+$InputFilePollingInterval 10
