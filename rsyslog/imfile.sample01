@@ -26,8 +26,7 @@ $InputRunFileMonitor
 
 
 
-$ModLoad imfile #
-needs to be done just once
+$ModLoad imfile # needs to be done just once
 # File 1
 $InputFileName /path/to/file1
 $InputFileTag tag1:
