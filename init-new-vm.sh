@@ -46,8 +46,8 @@ service fail2ban start
 chkconfig fail2ban on
 
 
-## PermitRootLogin no  ---> switched on
-PERMITROOT=on       ## on or off <Update accordingly>
+## PermitRootLogin no  ---> switched off
+PERMITROOT=off       ## on or off <Update accordingly>
 if test "$PERMITROOT" = "on" 
 then 
  cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
