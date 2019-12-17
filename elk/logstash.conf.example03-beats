@@ -1,0 +1,16 @@
+# INPUT HERE
+input {
+  beats {
+     port => 5044
+  }
+}
+
+
+# OUTPUT HERE
+output {
+  elasticsearch {
+     hosts => "http://localhost:9200"
+     index => "thisissparta"
+  }
+  stdout {}
+}
