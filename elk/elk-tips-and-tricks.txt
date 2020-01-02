@@ -1,6 +1,10 @@
 curl http://elk1:9200/_cluster/health?pretty
 curl http://elk1:9200/_cat/nodes?v
 curl http://elk1:9200/_cat/master?v
+curl -XGET 'elk01:9200/_cat/shards?pretty'
+curl -XGET 'elk01:9200/_cat/indices?v&pretty'
+
+
 
 
 rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
@@ -8,3 +12,8 @@ rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
 
 
 # https://www.hugeserver.com/kb/how-secure-kibana-nginx-centos/
+
+
+# https://www.elastic.co/guide/en/elasticsearch/client/curator/current/yum-repository.html ==> install curator
+
+
