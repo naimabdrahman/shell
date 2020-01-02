@@ -1,0 +1,16 @@
+# INPUT HERE
+input {
+  beats {
+     port => 5044
+  }
+}
+
+
+# OUTPUT HERE
+output {
+  elasticsearch {
+     hosts => "http://10.100.100.150:9200"
+     index => "beats-%{+YYYY.MM.dd}"
+  }
+  stdout {}
+}
