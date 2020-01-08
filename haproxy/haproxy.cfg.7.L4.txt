@@ -1,0 +1,33 @@
+## redis example ##
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    maxsslconn  256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+
+# set "mode tcp" for Layer4
+
+    mode               tcp
+    log                global
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+
+# define frontend and backend servers
+
+frontend redis-in
+    bind *:6379
+    default_backend    backend_servers
+
+backend backend_servers
+    balance            roundrobin
+    server             redis01.nar 192.168.1.51:6379 check
+    server             redis02.nar 192.168.1.52:6379 check
+    server             redis03.nar 192.168.1.53:6379 check
