@@ -1,0 +1,46 @@
+## Only works for centos8 / RHEL8
+
+global
+        daemon
+        maxconn 256
+
+
+defaults
+        mode tcp
+        timeout connect 5000ms
+        timeout client 50000ms
+        timeout server 50000ms
+
+
+frontend http
+        bind :8080
+        default_backend stats
+
+
+backend stats
+        mode http
+        stats enable
+
+        stats enable
+        stats uri /
+        stats refresh 1s
+        stats show-legends
+        stats admin if TRUE
+
+
+frontend redis-write
+        bind *:6379
+        default_backend redis-primary
+
+
+backend redis-primary
+        mode tcp
+        balance first
+        option tcp-check
+
+        tcp-check send info\ replication\r\n
+        tcp-check expect string role:master
+
+        server             node01:6379 x.x.x.1:6379 maxconn 1024  check inter 1s
+        server             node02:6379 x.x.x.2:6379 maxconn 1024  check inter 1s
+        server             node03:6379 x.x.x.3:6379 maxconn 1024  check inter 1s
