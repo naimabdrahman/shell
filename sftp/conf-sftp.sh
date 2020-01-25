@@ -17,7 +17,7 @@ service sshd restart
 
 echo -e "
 
-pls add userseraccout to sftpgroup for chroot SFTP
+pls add user account to sftpgroup for chroot SFTP
 example : usermod -aG sftpgroup sftpuser1
 
 "
