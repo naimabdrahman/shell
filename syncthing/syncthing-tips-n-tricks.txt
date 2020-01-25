@@ -1,0 +1,4 @@
+Indeed. Currently, to sync only nicefile.txt in foo/bar and nothing else in that directory, plop the following in .stignore:
+
+!foo/bar/nicefile.txt
+foo/bar/*
