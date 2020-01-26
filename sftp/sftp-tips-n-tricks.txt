@@ -1,0 +1,10 @@
+for chroot ==> the directory has to be owned by root. example follows
+
+[root@node1 ~]# ls -l /sftpdata/
+total 1
+drwxr-xr-x 3 root root 75 Jan 26 12:59 sftpuser1
+drwxr-xr-x 3 root root 75 Jan 26 12:59 sftpuser2
+
+
+
+permission ==> 755 is ok
