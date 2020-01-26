@@ -62,3 +62,6 @@ gluster volume info
 
 
 
+## Client for GlusterFS
+#yum -y install centos-release-gluster ; yum -y install glusterfs glusterfs-fuse
+
