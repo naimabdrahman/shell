@@ -2,3 +2,15 @@ Indeed. Currently, to sync only nicefile.txt in foo/bar and nothing else in that
 
 !foo/bar/nicefile.txt
 foo/bar/*
+
+
+
+==============================================================
+
+Port
+
+22000
+8384
+
+Port 22000/TCP (or the actual listening port if you have changed the Sync Protocol Listen Address setting.)
+Port 21027/UDP (for discovery broadcasts on IPv4 and multicasts on IPv6)
