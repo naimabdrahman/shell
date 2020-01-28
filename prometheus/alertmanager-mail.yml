@@ -16,7 +16,7 @@ receivers:
   - to: 'receiver@mail.com'
     send_resolved: false
     from: 'prometheus@relaymail.com'
-    smarthost: 'smtp.aduadu.com:587'
+    smarthost: 'smtp.aduadu.com:587' ## <== change the smtp accordingly
     auth_username: 'prometheus@relaymail.com'
     auth_password: 'insertpassword'
     #auth_secret: 'prometheus@relaymail.com'
