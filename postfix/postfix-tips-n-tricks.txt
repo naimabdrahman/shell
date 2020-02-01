@@ -1,1 +1,20 @@
 ## refer to https://likegeeks.com/linux-mail-server/ ##
+
+
+=========================================================
+
+
+
+To check the mail queue on your Linux mail server, use the following command:
+
+$ mailq
+
+This command shows the Postfix mail queue.
+
+If your queue is filled up and the message takes several hours to be sent, then you should flush the mail queue.
+
+$ postfix flush
+
+Now, if you check your mail queue you should find it empty.
+
+ 
