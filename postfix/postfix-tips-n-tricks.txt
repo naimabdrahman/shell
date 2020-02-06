@@ -21,3 +21,8 @@ Now, if you check your mail queue you should find it empty.
 =========================================================
 
 change smtp port from 25 to 587 refer here ==> https://colekcolek.com/2011/12/09/change-postfix-smtp-port-ubuntu/
+
+
+=========================================================
+
+to investigate ==> postconf
