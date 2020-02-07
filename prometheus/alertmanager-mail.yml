@@ -1,5 +1,7 @@
 global:
   resolve_timeout: 5m
+  smtp_require_tls: false ## for smtp port 25
+  
 
 #templates:
 #- '/etc/alertmanager/*.tmpl'
