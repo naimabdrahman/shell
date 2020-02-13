@@ -65,3 +65,10 @@ gluster volume info
 ## Client for GlusterFS
 #yum -y install centos-release-gluster ; yum -y install glusterfs glusterfs-fuse
 
+
+## Replacing a brick in a 3-replicas cluster
+## gluster volume replace-brick volname old-brick new-brick commit force ## <== commande to use
+#gluster volume replace-brick gv1 node1:/data/brickgv1 node1:/data/brickgv2 commit force # example
+
+
+
