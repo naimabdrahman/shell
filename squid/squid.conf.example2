@@ -1,0 +1,244 @@
+# ---------------------------------------------------------------------------------
+#    __             _     _ _     _            _    _ _     _                    
+#   / _\ __ _ _   _(_) __| | |__ | | __ _  ___| | _| (_)___| |_   ___  _ __ __ _ 
+#   \ \ / _` | | | | |/ _` | '_ \| |/ _` |/ __| |/ / | / __| __| / _ \| '__/ _` |
+#   _\ \ (_| | |_| | | (_| | |_) | | (_| | (__|   <| | \__ \ |_ | (_) | | | (_| |
+#   \__/\__, |\__,_|_|\__,_|_.__/|_|\__,_|\___|_|\_\_|_|___/\__(_)___/|_|  \__, |
+#          |_| Blacklists For Web Filtering Platforms & Appplications      |___/ 
+# ---------------------------------------------------------------------------------
+#
+# Support our efforts, to produce, maintain, and improve our blacklist production systems.
+#
+# http://www.squidblacklist.org/subscribe.html
+#
+# WARNING: There are many different versions of Squid Proxy available to you, and 
+# depending on which version you have may determine whether or not some of these 
+# directives are available or even neccesary for you. 
+#
+# It is because of this that you may get errors when attempting to load this conf, 
+# and that you will need to tailor this conf for your specific Squid Proxy installation.
+#
+# Help us identify falsely categorized domain names:
+#
+# Embed the following image into your blocked pages. ( Default Squid Proxy blocked page is located at */templates/ERR_ACCESS_DENIED )
+# Paste this html into the file with your favorite text editor.
+#
+# <img src="http://www.squidblacklist.org/images/pixel.png">
+#
+##############
+# Begin Conf #
+# ------------
+http_port 192.168.1.1:3128
+### SSL PORT & Certificate Options ###
+#
+# https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/ssl_cert/myca.pem key=/etc/squid/ssl_cert/myca.pem
+#
+# Just some deprecated settings which are no longer neccessary for modern squid conf
+#
+# refresh_pattern ^ftp:               1440    20%     10080
+# refresh_pattern ^gopher:            1440    0%      1440
+# refresh_pattern -i (/cgi-bin/|\?)      0       0%      0
+# refresh_pattern .                   0       20%     4320
+#
+### Note: ###
+#
+# Some site specific settings that may not be necessary to make this example config work, and they can be disabled, so make appropriate changes for your environment.
+#
+dns_nameservers 4.2.2.2
+hosts_file /etc/hosts
+cache_swap_low 90
+cache_swap_high 95
+access_log /var/log/squid/access.log
+cache_mem 250 MB
+memory_pools off
+maximum_object_size_in_memory 256 KB
+maximum_object_size 30 MB
+log_icp_queries off
+half_closed_clients off
+cache_mgr support@squidblacklist.org
+cache_dir aufs /var/spool/squid 170000 32 256 
+#
+visible_hostname squidblacklist.org
+#
+### SSL Configuration Options ###
+#
+# ssl_bump server-first all
+# sslproxy_cert_error deny all
+# sslproxy_flags DONT_VERIFY_PEER
+# sslcrtd_program /etc/squid/ssl_crtd -s /etc/ssl_db -M 4MB
+# sslcrtd_children 8 startup=1 idle=1
+#
+# ICAP ( Optional required for Squid-CLAMAV ICAP plugin )
+#
+# icap_enable on
+# icap_send_client_ip on
+# icap_send_client_username on
+# icap_client_username_encode off
+# icap_client_username_header X-Authenticated-User
+# icap_preview_enable on
+# icap_preview_size 1024
+# icap_service service_req reqmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav
+# adaptation_access service_req allow all
+# icap_service service_resp respmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav
+# adaptation_access service_resp allow all
+# 
+acl SSL_ports port 443
+acl Safe_ports port 80            # http
+acl Safe_ports port 21            # ftp
+acl Safe_ports port 443           # https
+acl Safe_ports port 70            # gopher
+acl Safe_ports port 210           # wais
+acl Safe_ports port 1025-65535    # unregistered ports
+acl Safe_ports port 280           # http-mgmt
+acl Safe_ports port 488           # gss-http
+acl Safe_ports port 591           # filemaker
+acl Safe_ports port 777           # multiling http
+acl CONNECT method CONNECT
+#
+### Blacklist settings & some guidelines ###  
+#
+#
+# You can load as many individual acl blacklists as you desire. 
+# Do not combine domains from multiple blacklists into a single file, that will result in duplication errors. 
+# To enable an access control list  uncomment the acl rule and its corresponding 'http_access deny' line. 
+#
+# 
+### Optional Adult/Porn Keyword Filtering ### - Applies keyword filtering to the domain name only portion of url strings. 
+#
+#
+# For enhanced porn filtering you can use the keywords/regex acl file packaged with squid-porn.acl.
+#
+# To enable uncomment the following two lines.
+#
+# acl pornreg dstdom_regex -i "/etc/squid/squid-porn-regex.acl"
+# http_access deny pornreg
+#
+#
+### Blacklist Selection ### - Uncomment your desired blacklist acl and the required corresponding deny rule below.
+#
+# Dont forget to change 'localnet' netblock to the ip range of your network
+#
+acl localnet src 192.168.1.0/24
+#acl ads dstdomain -i "/etc/squid/squid-ads.acl"
+#acl banking dstdomain -i "/etc/squid/squid-banking.acl"
+#acl blasphemy dstdomain -i "/etc/squid/squid-blasphemy.acl"
+#acl blogspotx dstdom_regex -i "/etc/squid/squid-blogspot-x.acl"
+#acl chanology dstdomain -i "/etc/squid/squid-chanology.acl"
+#acl clickbait dstdomain -i "/etc/squid/squid-clickbait.acl"
+#acl contraband dstdomain -i "/etc/squid/squid-contraband.acl"
+#acl cp dstdomain -i "/etc/squid/squid-cp.acl"
+#acl cryptojack dstdomain -i "/etc/squid/squid-cryptojack.acl"
+#acl dating dstdomain -i "/etc/squid/squid-dating.acl"
+#acl dyn dstdomain -i "/etc/squid/squid-dyn.acl"
+#acl facebook dstdomain -i "/etc/squid/squid-facebook.acl"
+#acl fakenews dstdomain -i "/etc/squid/squid-fakenews.acl"
+#acl feminist dstdomain -i "/etc/squid/squid-feminist.acl"
+#acl file dstdomain -i "/etc/squid/squid-file.acl"
+#acl freeweb dstdomain -i "/etc/squid/squid-freeweb.acl"
+#acl gambling dstdomain -i "/etc/squid/squid-gambling.acl"
+#acl gaming dstdomain -i "/etc/squid/squid-gaming.acl"
+#acl gov dstdomain -i "/etc/squid/squid-gov.acl"
+#acl image dstdomain -i "/etc/squid/squid-image.acl"
+#acl image-extensions urlpath_regex -i \.(jpg|png|jpeg|gif|bmp|ico)(\?.*)?$
+#acl image-mime rep_mime_type ( MORE MIME TYPES REQUIRED - NOV-20-2016 WORK IN PROGRESS.)
+#acl image-mime rep_mime_type -i ^image/
+#acl malicious dstdomain -i "/etc/squid/squid-malicious.acl"
+#acl music dstdomain -i "/etc/squid/squid-music.acl"
+#acl music-extensions urlpath_regex -i \.(mp1|mp2|mp3|pls|ogg|ram|qtl|m3u|wav|pcm|aiff|aac|wma|3gp|aax|m4a|m4p|oga|mogg|ra|rm|webm)(\?.*)?$
+#acl music-mime rep_mime_type audio/flv
+#acl music-mime rep_mime_type -i ^audio/
+#acl music-mime rep_mime_type -i ^audio\/
+#acl music-mime rep_mime_type ^audio/aac
+#acl music-mime rep_mime_type ^audio/mp4
+#acl music-mime rep_mime_type ^audio/m4a
+#acl music-mime rep_mime_type ^audio/mpeg 
+#acl music-mime rep_mime_type ^audio/mp1
+#acl music-mime rep_mime_type ^audio/mp2 
+#acl music-mime rep_mime_type ^audio/mp3 
+#acl music-mime rep_mime_type ^audio/mpg 
+#acl music-mime rep_mime_type ^audio/ogg
+#acl music-mime rep_mime_type ^audio/wav
+#acl music-mime rep_mime_type ^audio/webm
+#acl pharma-rx dstdomain -i "/etc/squid/squid-pharma-rx.acl"
+#acl piracy dstdomain -i "/etc/squid/squid-piracy.acl"
+#acl piracy-extensions urlpath_regex -i "/etc/squid/squid-piracy-regex.acl"
+#acl piracy-mime rep_mime_type ^application/x-bittorrent
+#acl porn dstdomain -i "/etc/squid/squid-porn.acl"
+#acl proxies dstdomain -i "/etc/squid/squid-proxies.acl"
+#acl racism dstdomain -i "/etc/squid/squid-racism.acl"
+#acl smedia dstdomain -i "/etc/squid/squid-smedia.acl"
+#acl terrorism dstdomain -i "/etc/squid/squid-terrorism.acl"
+#acl urlshort dstdomain -i "/etc/squid/squid-urlshort.acl"
+#acl video dstdomain -i "/etc/squid/squid-video.acl"
+#acl video-extensions urlpath_regex -i \.(mpg|mpeg|mp4|swf|afx|asf|m4v|mkv|ogg|flv|avi|mov|wmv|rmvb)(\?.*)?$
+#acl video-mime rep_mime_type video/flv 
+#acl video-mime rep_mime_type video/x-flv
+#acl video-mime rep_mime_type -i ^video/
+#acl video-mime rep_mime_type -i ^video\/
+#acl video-mime rep_mime_type ^application/x-shockwave-flash
+#acl video-mime rep_mime_type ^application/vnd.ms.wms-hdr.asfv1
+#acl video-mime rep_mime_type ^application/x-fcs
+#acl video-mime rep_mime_type ^application/x-mms-framed
+#acl video-mime rep_mime_type ^video/x-ms-asf
+#acl video-mime rep_mime_type ^video/mpeg
+#acl video-mime rep_mime_type ^video/x-scpls
+#acl video-mime rep_mime_type ^video/x-flv
+#acl video-mime rep_mime_type ^video/mpeg4
+#acl video-mime rep_mime_type ms-hdr
+#acl video-mime rep_mime_type x-fcs
+#acl weapons dstdomain -i "/etc/squid/squid-weapons.acl"
+#
+### Blacklist Selection ### - uncomment your desired blacklist filter deny rule.
+#
+#http_access deny ads
+#http_access deny banking
+#http_access deny blasphemy
+#http_access deny blogspotx
+#http_access deny chanology
+#http_access deny clickbait
+#http_access deny contraband
+#http_access deny cp
+#http_access deny cryptojack
+#http_access deny dating
+#http_access deny dyn
+#http_access deny facebook
+#http_access deny fakenews
+#http_access deny feminist
+#http_access deny file
+#http_access deny freeweb
+#http_access deny gambling
+#http_access deny gaming
+#http_access deny gov
+#http_access deny image
+#http_access deny image-extensions
+#http_access deny image-mime
+#http_access deny malicious
+#http_access deny music
+#http_access deny music-extensions
+#http_access deny music-mime
+#http_access deny pharma-rx
+#http_access deny piracy
+#http_access deny piracy-extensions
+#http_access deny piracy-mime
+#http_access deny porn
+#http_access deny proxies
+#http_access deny racism
+#http_access deny smedia
+#http_access deny terrorism
+#http_access deny urlshort
+#http_access deny video
+#http_access deny video-extensions
+#http_access deny video-mime
+#http_access deny weapons
+#
+### Note: ###
+#
+# The localhost manager to_localhost are built-in since Squid-3.2. 
+# These will cause 'WARNING' errors if used in Squid-3.2.x and newer versions.
+#
+http_access allow localnet
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access allow all
+#
+#EOL
