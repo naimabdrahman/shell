@@ -72,3 +72,4 @@ gluster volume info
 
 
 
+## allow.auth ==> https://www.jamescoyle.net/how-to/351-share-glusterfs-volume-to-a-single-ip-address
