@@ -1,15 +1,29 @@
 ## install grafana on centos 7
 
 touch /etc/yum.repos.d/grafana.repo
-echo -e "[grafana]" >> /etc/yum.repos.d/grafana.repo
-echo -e "name=grafana" >> /etc/yum.repos.d/grafana.repo
-echo -e "baseurl=https://packages.grafana.com/oss/rpm" >> /etc/yum.repos.d/grafana.repo
-echo -e "repo_gpgcheck=1" >> /etc/yum.repos.d/grafana.repo
-echo -e "enabled=1" >> /etc/yum.repos.d/grafana.repo
-echo -e "gpgcheck=1" >> /etc/yum.repos.d/grafana.repo
-echo -e "gpgkey=https://packages.grafana.com/gpg.key" >> /etc/yum.repos.d/grafana.repo
-echo -e "sslverify=1" >> /etc/yum.repos.d/grafana.repo
-echo -e "sslcacert=/etc/pki/tls/certs/ca-bundle.crt" >> /etc/yum.repos.d/grafana.repo
+cat > /etc/yum.repos.d/grafana.repo <<EOL
+[grafana]
+name=grafana
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+EOL
+
+
+#touch /etc/yum.repos.d/grafana.repo
+#echo -e "[grafana]" >> /etc/yum.repos.d/grafana.repo
+#echo -e "name=grafana" >> /etc/yum.repos.d/grafana.repo
+#echo -e "baseurl=https://packages.grafana.com/oss/rpm" >> /etc/yum.repos.d/grafana.repo
+#echo -e "repo_gpgcheck=1" >> /etc/yum.repos.d/grafana.repo
+#echo -e "enabled=1" >> /etc/yum.repos.d/grafana.repo
+#echo -e "gpgcheck=1" >> /etc/yum.repos.d/grafana.repo
+#echo -e "gpgkey=https://packages.grafana.com/gpg.key" >> /etc/yum.repos.d/grafana.repo
+#echo -e "sslverify=1" >> /etc/yum.repos.d/grafana.repo
+#echo -e "sslcacert=/etc/pki/tls/certs/ca-bundle.crt" >> /etc/yum.repos.d/grafana.repo
 
 
 yum -y install grafana
