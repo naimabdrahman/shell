@@ -1,0 +1,3 @@
+yum --disablerepo="*" --enablerepo="epel" list available
+yum --disablerepo="*" --enablerepo="epel" install install s3fs
+yum --disablerepo="*" --enablerepo="epel" install install s3fs-fuse
