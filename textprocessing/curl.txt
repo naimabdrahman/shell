@@ -1,0 +1,9 @@
+## How do you POST a JSON file with curl??
+
+examples;
+
+curl -X POST -H "Content-Type: application/json" -d @FILENAME DESTINATION
+
+curl -X POST -H "Content-Type: application/json" -d @../data/cats.json http://localhost:8080/mSfvMwNAfj
+
+curl -X POST https://api.linode.com/v4/linode/instances -H "Authorization: Bearer <API TOKEN>" -H "Content-type: application/json" -d /path/to/lalala.json
