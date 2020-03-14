@@ -1,6 +1,30 @@
+    server {
+    server_name thechillexbro.xyz www.thechillexbro.xyz; # managed by Certbot
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+                #proxy_pass http://localhost:8081;
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+
+
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/thechillexbro.xyz/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/thechillexbro.xyz/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+}
