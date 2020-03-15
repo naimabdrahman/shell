@@ -1,1 +1,39 @@
+## reference : https://www.digitalocean.com/community/tutorials/how-to-secure-haproxy-with-let-s-encrypt-on-ubuntu-14-04
+## reference : https://certbot.eff.org/lets-encrypt/centosrhel7-haproxy.html
+
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    mode               http
+    log                global
+    option             httplog
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+#frontend http-in
+#    bind *:80
+#    default_backend    backend_servers
+#    option             forwardfor
+
+frontend www-https
+   bind *:443 ssl crt /etc/haproxy/certs/domain.pem
+   reqadd X-Forwarded-Proto:\ https
+   acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+   #use_backend letsencrypt-backend if letsencrypt-acl
+   default_backend backend_servers
+
+backend backend_servers
+    balance            roundrobin
+    #redirect scheme https if !{ ssl_fc }
+    server             lalala.nar.test 192.168.138.95:8081 check
+    server             lalala.nar.test 192.168.138.95:8082 check
+
 
