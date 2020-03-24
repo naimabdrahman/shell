@@ -53,3 +53,10 @@ api_url = https://api.github.com/naimabdrahman
 ;allowed_domains =
 ;team_ids =
 ;allowed_organizations =
+
+################# in github #################
+
+## ==> Homepage URL ==> http://x.x.x.x:3000
+
+## ==> Authorization callback URL ==> http://x.x.x.x:3000/login/github 
+
