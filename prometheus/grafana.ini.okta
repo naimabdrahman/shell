@@ -1,0 +1,16 @@
+< root_url = http://x.x.x.x:3000/   ## Public IP
+---
+
+< enabled = true
+< name = Okta
+---
+
+< client_id = <INSERT>
+< client_secret = <INSERT>
+---
+
+< scopes = openid profile email
+
+< auth_url = https://dev-346563.okta.com/oauth2/v1/authorize  ## example of okta my domain
+< token_url = https://dev-346563.okta.com/oauth2/v1/token     ## example of okta my domain
+< api_url = https://dev-346563.okta.com/oauth2/v1/userinfo    ## example of okta my domain
