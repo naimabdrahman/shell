@@ -14,3 +14,18 @@
 < auth_url = https://dev-346563.okta.com/oauth2/v1/authorize  ## example of okta my domain
 < token_url = https://dev-346563.okta.com/oauth2/v1/token     ## example of okta my domain
 < api_url = https://dev-346563.okta.com/oauth2/v1/userinfo    ## example of okta my domain
+
+
+####################################
+## below this line is okta config ##
+####################################
+
+## Login redirect URIs ==> http://X.X.X.X:3000/login/generic_oauth
+
+## Logout redirect URIs ==> http://X.X.X.X:3000
+
+## Login initiated by ==> App Only
+
+## Initiate login URI ==> http://X.X.X.X:3000/login/generic_oauth
+
+
