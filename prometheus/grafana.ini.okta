@@ -1,4 +1,4 @@
-< root_url = http://x.x.x.x:3000/   ## Public IP
+< root_url = http://x.x.x.x:3000/   ## Public IP ## notes: change port 3000 to 80 if reverse proxy is used ##
 ---
 
 < enabled = true
@@ -28,4 +28,4 @@
 
 ## Initiate login URI ==> http://X.X.X.X:3000/login/generic_oauth
 
-
+## notes: change port 3000 to 80 if reverse proxy is used ##
