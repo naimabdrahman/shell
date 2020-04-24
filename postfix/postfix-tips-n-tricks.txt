@@ -26,3 +26,16 @@ change smtp port from 25 to 587 refer here ==> https://colekcolek.com/2011/12/09
 =========================================================
 
 to investigate ==> postconf
+
+=========================================================
+
+sasl
+
+https://www.linode.com/docs/email/postfix/postfix-smtp-debian7/
+
+https://wiki.centos.org/HowTos/postfix_sasl_relayhost
+
+https://hub.docker.com/r/turgon37/smtp-relay
+
+
+=========================================================
