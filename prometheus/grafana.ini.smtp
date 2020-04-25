@@ -1,6 +1,6 @@
 [smtp]
 enabled = true
-host = localhost:25  ## or <POSTFIX-IP:25> ## notes : for smtp.aduadu.com:587, it is not working   
+host = localhost:25  ## or <POSTFIX-IP:25>        ## notes: for smtp.aduadu.com:587, it is not working !!  
 user = prometheus@thechillexbro.com
 password = "insertpassword"
 skip_verify = false
