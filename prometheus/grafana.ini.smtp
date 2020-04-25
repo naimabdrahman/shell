@@ -1,8 +1,10 @@
 [smtp]
 enabled = true
-host = smtp.aduadu.com:587
+host = localhost:25  ## or <POSTFIX-IP:25> ## notes : for smtp.aduadu.com:587, it is not working   
 user = prometheus@thechillexbro.com
 password = "insertpassword"
 skip_verify = false
 from_address = prometheus@thechillexbro.com
 from_name = Grafana
+
+## config tested and working fine
