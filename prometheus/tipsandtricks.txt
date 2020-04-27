@@ -1,2 +1,6 @@
  ## to output errror
  /opt/prometheus-2.12.0.linux-amd64/prometheus --config.file=/opt/prometheus-2.12.0.linux-amd64/prometheus.yml  --log.level=error
+
+
+## test alertmanager
+curl -H "Content-Type: application/json" -d '[{"labels":{"alertname":"TestAlert1"}}]' localhost:9093/api/v1/alerts
