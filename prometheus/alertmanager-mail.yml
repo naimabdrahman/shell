@@ -1,6 +1,6 @@
 global:
   resolve_timeout: 5m
-  #smtp_require_tls: false ## for smtp port 25
+  #smtp_require_tls: false ## for smtp port 25 - to use postfix:25 pls uncomment !!
   
 
 #templates:
