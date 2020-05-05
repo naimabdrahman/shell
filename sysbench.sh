@@ -2,26 +2,46 @@
 ## benchmarking server
 
 
+## installation on centos7
+yum -y install sysbench
+
+
+
 ## CPU benchmark
-#sysbench --test=cpu --cpu-max-prime=20000 run
-sysbench --test=cpu run
+
+# with option
+sysbench cpu --cpu-max-prime=20000 run
+
+#optionless
+sysbench cpu run
+
+
+
 
 
 ## Memory (read)
-sysbench --test=memory run
+sysbench memory run
 
 ## Memory (write)
-sysbench --test=memory --memory-oper=write run
+sysbench memory --memory-oper=write run
 
 
-## File IO Benchmark
-#sysbench --test=fileio --file-total-size=2G prepare
-#sysbench --test=fileio --file-total-size=2G cleanup # to cleanup
 
-## File IO Benchmark
-sysbench --test=fileio prepare
-sysbench --test=fileio --file-test-mode=rndrw run
-sysbench --test=fileio cleanup
+
+
+## File IO Benchmark - make sure the tested size is bigger than the ram
+
+# optionless
+sysbench fileio prepare
+sysbench fileio --file-test-mode=rndrw run
+sysbench fileio cleanup
+
+# with option
+sysbench fileio --file-total-size=5G --file-test-mode=rndrw --time=300 --max-requests=0 prepare
+sysbench fileio --file-total-size=5G --file-test-mode=rndrw --time=300 --max-requests=0 run
+sysbench fileio --file-total-size=5G --file-test-mode=rndrw --time=300 --max-requests=0 cleanup
+
+
 
 ## MySQL Benchmark
 #sysbench --test=oltp --oltp-table-size=1000000 --db-driver=mysql --mysql-db=test --mysql-user=root --mysql-password=yourrootsqlpassword prepare
