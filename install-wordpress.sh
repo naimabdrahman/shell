@@ -16,9 +16,9 @@ yum -y install mariadb
 
 ## configure mysql db (assuming mysql db already installed in node2)
 ## need to be run in db server (most likely)
-mysql -u root -ppassword -e -h node2 "create database wordpress;"
-mysql -u root -ppassword -e -h node2 "grant all privileges on wordpress.* to wordpress@'node1.nar.test' identified by 'password';" 
-mysql -u root -ppassword -e -h node2 "flush privileges;"
+mysql -u root -ppassword -h node2 -e "create database wordpress;"
+mysql -u root -ppassword -h node2 -e "grant all privileges on wordpress.* to wordpress@'node1.nar.test' identified by 'password';" 
+mysql -u root -ppassword -h node2 -e "flush privileges;"
 # or in mysql shell run "create database wordpress;grant all privileges on wordpress.* to wordpress@'node1.nar.test' identified by 'password';flush privileges;" 
 
 
