@@ -93,6 +93,23 @@ echo -e "
 #######################################
 
 "
+echo -e "
+
+########## tips n tricks - to check elasticsearch ########## 
+curl http://elk01:9200/_cat/nodes?v ; curl http://elk01:9200/_cluster/health?pretty
+
+curl http://elk01:9200/_cat
+curl http://elk01:9200/_cat/nodes
+curl http://elk01:9200/_cat/nodes?pretty
+curl http://elk01:9200/_cat/nodes?v
+
+curl http://elk01:9200/_cat
+curl http://elk01:9200/_cat/health
+curl http://elk01:9200/_cat/health?pretty
+curl http://elk01:9200/_cat/health?v
+############################################################
+
+"
 
 ## end
 
