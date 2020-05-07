@@ -1,0 +1,33 @@
+## grafana.ini mysql config
+
+
+
+< type = mysql
+< host = 127.0.0.1:3306
+< name = grafana
+< user = root
+< password = password
+
+
+## reference: https://community.cloudera.com/t5/Community-Articles/How-to-set-up-Grafana-to-use-MySQL-database-rather-than-the/ta-p/246178
+
+On MySQL server (be sure to change the password):
+
+mysql> create database grafana;
+Query OK, 1 row affected (0.01 sec)
+mysql> GRANT USAGE ON `grafana`.* to 'grafana'@'IP' identified by 'password';
+Query OK, 0 rows affected (0.00 sec)
+mysql> GRANT ALL PRIVILEGES ON `grafana`.* to 'grafana'@'IP' with grant option;
+Query OK, 0 rows affected (0.00 sec)
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+mysql> use grafana;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+mysql> create table `session` (
+    -> `key`   char(16) not null,
+    -> `data`  blob,
+    -> `expiry` int(11) unsigned not null,
+    -> primary key (`key`)
+    -> ) ENGINE=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
