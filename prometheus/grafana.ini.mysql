@@ -15,9 +15,9 @@ On MySQL server (be sure to change the password):
 
 mysql> create database grafana;
 Query OK, 1 row affected (0.01 sec)
-mysql> GRANT USAGE ON `grafana`.* to 'grafana'@'IP' identified by 'password';
+mysql> GRANT USAGE ON `grafana`.* to 'grafana'@'%' identified by 'password';
 Query OK, 0 rows affected (0.00 sec)
-mysql> GRANT ALL PRIVILEGES ON `grafana`.* to 'grafana'@'IP' with grant option;
+mysql> GRANT ALL PRIVILEGES ON `grafana`.* to 'grafana'@'%' with grant option;
 Query OK, 0 rows affected (0.00 sec)
 mysql> flush privileges;
 Query OK, 0 rows affected (0.00 sec)
