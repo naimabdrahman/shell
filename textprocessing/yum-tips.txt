@@ -1,3 +1,8 @@
 yum --disablerepo="*" --enablerepo="epel" list available
 yum --disablerepo="*" --enablerepo="epel" install install s3fs
 yum --disablerepo="*" --enablerepo="epel" install install s3fs-fuse
+
+
+
+dnf --disablerepo="*" --enablerepo="epel" list available | grep chromium
+dnf --enablerepo="epel" install chromium 
