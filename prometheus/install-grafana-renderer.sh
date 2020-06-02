@@ -11,6 +11,11 @@ EOL
 
 yum install -y google-chrome-stable
 
+## install chromium
+#dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+#yum -y install chromium*
+
+
 
 ## install nodejs and validate
 yum install -y nodejs gcc gcc-c++
