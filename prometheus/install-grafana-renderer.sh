@@ -18,7 +18,7 @@ yum install -y google-chrome-stable
 
 
 ## install nodejs and validate
-yum install -y nodejs gcc gcc-c++
+yum install -y nodejs gcc gcc-c++ make
 node -v 
 npm -v
 
