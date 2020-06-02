@@ -1,5 +1,6 @@
 ## install chrome
 
+:'
 cat > /etc/yum.repos.d/google-chrome.repo <<EOL
 [google-chrome]
 name=google-chrome
@@ -10,10 +11,11 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOL
 
 yum install -y google-chrome-stable
+'
 
 ## install chromium
 #dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-#yum -y install chromium*
+yum -y install chromium*
 
 
 
