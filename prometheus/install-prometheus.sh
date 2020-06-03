@@ -22,6 +22,7 @@ mv $package /root/
 #/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml &
 
 ## create prometheus service
+:'
 touch /etc/systemd/system/prometheus.service
 echo -e "[Unit]" > /etc/systemd/system/prometheus.service
 echo -e "Description=Prometheus" >> /etc/systemd/system/prometheus.service
@@ -32,6 +33,21 @@ echo -e "ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=
 echo -e "" >> /etc/systemd/system/prometheus.service
 echo -e "[Install]" >> /etc/systemd/system/prometheus.service
 echo -e "WantedBy=default.target" >> /etc/systemd/system/prometheus.service
+'
+touch /etc/systemd/system/prometheus.service
+cat > /etc/systemd/system/prometheus.service <<EOL
+[Unit]
+Description=Prometheus
+
+
+[Service]
+User=root
+ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml
+#ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml --storage.tsdb.retention.time=30d --web.enable-lifecycle
+
+[Install]
+WantedBy=default.target
+EOL
 
 
 ## enable service and run permanently
