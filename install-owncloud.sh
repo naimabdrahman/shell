@@ -1,3 +1,5 @@
+## install owncloud on centos 7
+
 ## requirement
 yum -y install centos-release-scl.noarch centos-sclo-rh
 yum --enablerepo=centos-sclo-rh -y install rh-php70 rh-php70-php rh-php70-php-pear rh-php70-php-mbstring rh-php70-php-pdo rh-php70-php-intl rh-php70-php-gd rh-php70-php-mysqlnd httpd24
