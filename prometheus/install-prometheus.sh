@@ -22,18 +22,6 @@ mv $package /root/
 #/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml &
 
 ## create prometheus service
-:'
-touch /etc/systemd/system/prometheus.service
-echo -e "[Unit]" > /etc/systemd/system/prometheus.service
-echo -e "Description=Prometheus" >> /etc/systemd/system/prometheus.service
-echo -e "">> /etc/systemd/system/prometheus.service
-echo -e "[Service]" >> /etc/systemd/system/prometheus.service
-echo -e "User=root">> /etc/systemd/system/prometheus.service
-echo -e "ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml" >> /etc/systemd/system/prometheus.service
-echo -e "" >> /etc/systemd/system/prometheus.service
-echo -e "[Install]" >> /etc/systemd/system/prometheus.service
-echo -e "WantedBy=default.target" >> /etc/systemd/system/prometheus.service
-'
 touch /etc/systemd/system/prometheus.service
 cat > /etc/systemd/system/prometheus.service <<EOL
 [Unit]
