@@ -1,0 +1,136 @@
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  thechillexbro.xyz www.thechillexbro.xyz;
+        #root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+                proxy_pass http://127.0.0.1:8080;
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server.
+
+    server {
+        listen       443 ssl http2;
+        listen       [::]:443 ssl http2;
+        server_name  thechillexbro.xyz www.thechillexbro.xyz;
+        #root         /usr/share/nginx/html;
+        ssl_certificate "/etc/letsencrypt/live/thechillexbro.xyz/fullchain.pem";
+        ssl_certificate_key "/etc/letsencrypt/live/thechillexbro.xyz/privkey.pem";
+
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers on;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+                proxy_pass http://127.0.0.1:8080;
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+
+
+                # Any request to this server will first be sent to this URL
+                auth_request /vouch-validate;
+
+                location = /vouch-validate {
+                # This address is where Vouch will be listening on
+                proxy_pass http://www.thechillexbro.xyz:9090/validate;
+                proxy_pass_request_body off; # no need to send the POST body
+
+                proxy_set_header Content-Length "";
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+
+                # these return values are passed to the @error401 call
+                auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
+                auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
+                auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+                }
+
+                error_page 401 = @error401;
+
+                # If the user is not logged in, redirect them to Vouch's login URL
+                location @error401 {
+                return 302 https://login.thechillexbro.xyz/login?url=https://$http_host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err;
+                }
+
+
+    }
+
+        server {
+                listen 443 ssl;
+                server_name login.thechillexbro.xyz;
+
+        ssl_certificate "/etc/letsencrypt/live/thechillexbro.xyz/fullchain.pem";
+        ssl_certificate_key "/etc/letsencrypt/live/thechillexbro.xyz/privkey.pem";
+
+                # Proxy to your Vouch instance
+                location / {
+                proxy_set_header  Host  login.thechillexbro.xyz;
+                proxy_set_header  X-Forwarded-Proto https;
+                proxy_pass        http://127.0.0.1:9090;
+                }
+        }
+
+}
+
