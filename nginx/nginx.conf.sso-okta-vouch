@@ -88,49 +88,48 @@ http {
         }
 
 
-                # Any request to this server will first be sent to this URL
-                auth_request /vouch-validate;
+        # Any request to this server will first be sent to this URL
+        auth_request /vouch-validate;
 
-                location = /vouch-validate {
-                # This address is where Vouch will be listening on
-                proxy_pass http://www.thechillexbro.xyz:9090/validate;
-                proxy_pass_request_body off; # no need to send the POST body
+        location = /vouch-validate {
+        # This address is where Vouch will be listening on
+        proxy_pass http://www.thechillexbro.xyz:9090/validate;
+        proxy_pass_request_body off; # no need to send the POST body
 
-                proxy_set_header Content-Length "";
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Content-Length "";
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
 
-                # these return values are passed to the @error401 call
-                auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
-                auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
-                auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
-                }
+        # these return values are passed to the @error401 call
+        auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
+        auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
+        auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+        }
 
-                error_page 401 = @error401;
+        error_page 401 = @error401;
 
-                # If the user is not logged in, redirect them to Vouch's login URL
-                location @error401 {
-                return 302 https://login.thechillexbro.xyz/login?url=https://$http_host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err;
-                }
-
+        # If the user is not logged in, redirect them to Vouch's login URL
+        location @error401 {
+        return 302 https://login.thechillexbro.xyz/login?url=https://$http_host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err;
+        }
 
     }
 
-        server {
-                listen 443 ssl;
-                server_name login.thechillexbro.xyz;
+    server {
+        listen 443 ssl;
+        server_name login.thechillexbro.xyz;
 
         ssl_certificate "/etc/letsencrypt/live/thechillexbro.xyz/fullchain.pem";
         ssl_certificate_key "/etc/letsencrypt/live/thechillexbro.xyz/privkey.pem";
 
-                # Proxy to your Vouch instance
-                location / {
-                proxy_set_header  Host  login.thechillexbro.xyz;
-                proxy_set_header  X-Forwarded-Proto https;
-                proxy_pass        http://127.0.0.1:9090;
-                }
+        # Proxy to your Vouch instance
+        location / {
+        proxy_set_header  Host  login.thechillexbro.xyz;
+        proxy_set_header  X-Forwarded-Proto https;
+        proxy_pass        http://127.0.0.1:9090;
         }
+    }
 
 }
 
