@@ -21,5 +21,16 @@ yum -y install chromium*
 
 
 ## validation rendering testing 
-google-chrome-stable --headless --disable-gpu --no-sandbox --print-to-pdf https://gf.dev/
+#google-chrome-stable --headless --disable-gpu --no-sandbox --print-to-pdf https://gf.dev/
+
+## google-chrome-stable
+#google-chrome-stable --headless --disable-gpu --print-to-pdf https://gf.dev/
+
+
+## no proxy
+#chromium-browser --headless --disable-gpu --print-to-pdf https://gf.dev/
+
+
+## with proxy
+#chromium-browser --proxy-server=http://192.168.94.10:8286 --headless --disable-gpu --print-to-pdf https://gf.dev/
 
