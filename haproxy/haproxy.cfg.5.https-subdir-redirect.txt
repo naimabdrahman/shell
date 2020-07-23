@@ -1,0 +1,28 @@
+global
+    log         127.0.0.1 local2 info
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     256
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    mode               http
+    log                global
+    option             httplog
+    timeout connect    10s
+    timeout client     30s
+    timeout server     30s
+
+frontend http-in
+    bind *:8080         ssl crt /etc/pki/nginx/example.pem
+    default_backend     backend_servers
+    option              forwardfor
+    acl path_root path /
+    redirect location https://example.com/lalala/ if path_root ## tested with public IP
+
+
+backend backend_servers
+    balance            roundrobin
+    server             localhost 127.0.0.1:80 check
