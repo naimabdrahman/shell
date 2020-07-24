@@ -1,0 +1,13 @@
+## ref ==> https://qbox.io/blog/deploy-scale-logstash-high-availability-elk-redis-haproxy
+
+filebeat.prospectors:
+- input_type: log
+ paths:
+ - /var/log/*.log
+ input_type: log
+ document_type: syslog
+ registry: /var/lib/filebeat/registry
+output.logstash:
+ hosts: ["10.12.2.1:6000", "10.12.2.2:6000"]
+ loadbalance: true
+ index: filebeat
