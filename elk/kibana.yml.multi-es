@@ -1,0 +1,13 @@
+## reference ==> https://www.elastic.co/guide/en/kibana/6.8/production.html
+
+server.port: 5601
+
+server.host: "0.0.0.0"
+
+
+
+
+
+elasticsearch.hosts:
+  - http://elasticsearch1:9200
+  - http://elasticsearch2:9200
