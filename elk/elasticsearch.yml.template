@@ -62,3 +62,19 @@ http.port: 9200
 discovery.seed_hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 cluster.initial_master_nodes: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 xpack.security.enabled: false
+
+
+
+
+## data node config
+cluster.name: elk-cluster
+node.name: elk03
+node.master: true
+node.data: true
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 10.0.0.3
+http.port: 9200
+discovery.seed_hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
+cluster.initial_master_nodes: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
+xpack.security.enabled: false
