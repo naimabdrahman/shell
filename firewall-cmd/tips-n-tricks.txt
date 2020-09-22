@@ -1,0 +1,18 @@
+=====================================================================================================================================
+
+
+## allow access from only one IP
+## reference ==> https://unix.stackexchange.com/questions/159873/whitelist-source-ip-addresses-in-centos-7
+## reference ==> https://serverfault.com/questions/877494/firewalld-how-to-whitelist-just-two-ip-addresses-not-on-the-same-subnet
+
+# tested with below
+firewall-cmd --permanent --list-sources
+firewall-cmd --permanent --add-source=192.168.0.41
+firewall-cmd --permanent --zone=public --add-port=1-65535/tcp
+firewall-cmd --permanent --zone=public --add-port=1-65535/udp
+firewall-cmd --reload
+
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.41" invert="True" drop'
+
+
+=====================================================================================================================================
