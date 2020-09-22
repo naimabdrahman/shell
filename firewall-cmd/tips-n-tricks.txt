@@ -12,7 +12,9 @@ firewall-cmd --permanent --zone=public --add-port=1-65535/tcp
 firewall-cmd --permanent --zone=public --add-port=1-65535/udp
 firewall-cmd --reload
 
-firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.41" invert="True" drop'
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.41" invert="True" drop'  ## single IP example
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.0/24" invert="True" drop'  ##  slash - segment /24 example
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.42" reject' ## additional of unwanted IP in same segment. to be used if slash subnet is used 
 
 
 =====================================================================================================================================
