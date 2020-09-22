@@ -8,8 +8,8 @@
 # tested with below
 firewall-cmd --permanent --list-sources
 firewall-cmd --permanent --add-source=192.168.0.41
-firewall-cmd --permanent --zone=public --add-port=1-65535/tcp
-firewall-cmd --permanent --zone=public --add-port=1-65535/udp
+firewall-cmd --permanent --add-port=1-65535/tcp
+firewall-cmd --permanent --add-port=1-65535/udp
 firewall-cmd --reload
 
 firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.0.41" invert="True" drop'  ## single IP example
