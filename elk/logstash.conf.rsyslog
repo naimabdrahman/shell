@@ -1,3 +1,5 @@
+## reference ==> https://medium.com/schkn/monitoring-linux-logs-with-kibana-and-rsyslog-4dfbbd287807
+
 input {                                                                                      
   udp {                                                                                      
     host => "127.0.0.1"                                                                      
