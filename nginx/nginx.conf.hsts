@@ -1,0 +1,18 @@
+server {
+    listen 443 ssl;
+
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # This 'location' block inherits the STS header
+    location / {
+        root /usr/share/nginx/html;
+    }
+
+    # Because this 'location' block contains another 'add_header' directive,
+    # we must redeclare the STS header
+    location /servlet {
+        add_header X-Served-By "My Servlet Handler";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+        proxy_pass http://localhost:8080;
+    }
+}
