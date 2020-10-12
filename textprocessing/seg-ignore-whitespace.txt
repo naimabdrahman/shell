@@ -3,3 +3,10 @@
 sed -i 's/PASS_MIN_DAYS\s*0/PASS_MIN_DAYS 7/g'
 
 
+==================================
+
+ignore leading whitespace followed by words, eg prom
+
+==> grep  ^\\s*prom
+
+==> cat ~/compose/mon.yml | grep  ^\\s*prom
