@@ -51,7 +51,7 @@ PERMITROOT=off       ## on or off <Update accordingly>
 if test "$PERMITROOT" = "on" 
 then 
  cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bckup.`date +%s`
- sed -i 's/PermitRootLogin yes/PermitRootLogin no/'g /etc/ssh/sshd_config
+ sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 else 
   echo -e "PERMITROOT is not on"
 fi
