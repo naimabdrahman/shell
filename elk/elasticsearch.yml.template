@@ -78,3 +78,16 @@ http.port: 9200
 discovery.seed_hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 cluster.initial_master_nodes: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 xpack.security.enabled: false
+
+
+
+
+
+#####################################################
+example 3 - localhost
+#####################################################
+
+
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+xpack.security.enabled: true
