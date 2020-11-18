@@ -3,6 +3,9 @@ yum --disablerepo="*" --enablerepo="epel" install install s3fs
 yum --disablerepo="*" --enablerepo="epel" install install s3fs-fuse
 
 
+yum --releasever=7.5 update -y
+
+
 
 dnf --disablerepo="*" --enablerepo="epel" list available | grep chromium
 dnf --enablerepo="epel" install chromium 
