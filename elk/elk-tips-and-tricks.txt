@@ -38,5 +38,5 @@ rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
 xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
 
-
+## https://alexmarquardt.com/2018/11/05/security-tls-ssl-pki-authentication-in-elasticsearch/ ==> stepbystep
 
