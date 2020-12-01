@@ -34,3 +34,9 @@ rm -rf /var/lib/elasticsearch/nodes ## wipeout before creating new cluster
 # https://www.elastic.co/guide/en/elasticsearch/client/curator/current/yum-repository.html ==> install curator
 
 
+## enable security into elasticsearch cluster
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+
+
+
