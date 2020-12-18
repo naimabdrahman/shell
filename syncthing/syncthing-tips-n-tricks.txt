@@ -9,13 +9,30 @@ foo/bar/*
 example ssh user sync
 ==============================================================
 
-!/etc/passwd
-!/etc/group
-!/etc/shadow
-!/etc/ssh/sshd_config
-/etc/**
+### new config ###
+
+!passwd
+!group
+!shadow
+!sshd_config
+!sudoers
+!fstab
+ifcfg-ens192
+**
 
 ==============================================================
+
+
+
+
+
+
+
+
+
+
+
+
 
 Port
 
@@ -24,3 +41,18 @@ Port
 
 Port 22000/TCP (or the actual listening port if you have changed the Sync Protocol Listen Address setting.)
 Port 21027/UDP (for discovery broadcasts on IPv4 and multicasts on IPv6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================
+adv config => https://computingforgeeks.com/install-and-configure-syncthing-on-centos-linux/
