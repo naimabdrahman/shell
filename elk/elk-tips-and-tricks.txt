@@ -40,3 +40,10 @@ xpack.security.transport.ssl.enabled: true
 
 ==> https://alexmarquardt.com/2018/11/05/security-tls-ssl-pki-authentication-in-elasticsearch/ ==> stepbystep
 ==> https://medium.com/@arvirzk/securing-elastic-stack-7-6-1-82d6a2c94fa6
+
+
+## to delete broken index
+curl -XDELETE http://localhost:9200/.kibana_1 
+    curl -XDELETE localhost:9200/index_name.
+    curl -XDELETE localhost:9200/index_name/doc-type.
+    curl -XDELETE localhost:9200/index_name/doc-type/documentId.
