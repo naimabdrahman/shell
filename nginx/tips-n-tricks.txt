@@ -1,0 +1,7 @@
+## tuning
+https://www.monitis.com/blog/6-best-practices-for-optimizing-your-nginx-performance/
+
+https://rollout.io/blog/tuning-nginx/
+
+
+
