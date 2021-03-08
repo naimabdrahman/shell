@@ -16,3 +16,15 @@ curl -X POST https://api.linode.com/v4/linode/instances -H "Authorization: Beare
  "label": "<INSERT LABEL>"
  }'
  
+ 
+ 
+ curl -i -X POST \
+  --url http://localhost:8001/services/ \
+  --data 'name=example-service' \
+  --data 'url=http://www.roketking.com'
+
+  
+  
+curl -i -X POST \
+  --url http://localhost:8001/services/example-service/routes \
+  --data 'hosts[]=example.com'
