@@ -1,5 +1,5 @@
 ## New VM init
-## tested on centos 7
+## tested on centos 7 / centos 8
 ## password text file is prepared separately prior to running this script
 
 ## epel
@@ -37,7 +37,7 @@ sed -i  's/^#\s*\(%wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
 
 
 ## packages
-yum -y install vim wget git bind-utils net-tools lsof screen telnet tar tree jq unzip
+yum -y install vim wget git bind-utils net-tools lsof screen telnet tar tree jq unzip make
 
 
 ## fail2ban
