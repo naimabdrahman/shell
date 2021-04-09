@@ -28,3 +28,6 @@ curl -X POST https://api.linode.com/v4/linode/instances -H "Authorization: Beare
 curl -i -X POST \
   --url http://localhost:8001/services/example-service/routes \
   --data 'hosts[]=example.com'
+
+
+curl https://www.boredapi.com/api/activity | jq 
