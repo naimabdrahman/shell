@@ -5,7 +5,7 @@
 yum -y install gcc-c++ make
 
 # nodejs repo if required
-#curl -sL https://rpm.nodesource.com/setup_11.x | sudo -E bash -
+#curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
 
 
 # install nodejs
