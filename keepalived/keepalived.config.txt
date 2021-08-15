@@ -1,5 +1,6 @@
 # configuration template keepalived for haproxy.
 # Pls update accordingly
+# in some case, killall is replaced with pidof
 
 vrrp_script chk_haproxy {
   script "killall -0 haproxy" # check the haproxy process
