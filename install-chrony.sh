@@ -7,7 +7,8 @@ service chronyd start
 chkconfig chronyd on
 
 
-# checking services
+# checking services & sync manually
 #chronyc tracking
 #chronyc sources
-
+#chronyc -a 'burst 4/4'
+#chronyc -a makestep
