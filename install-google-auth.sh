@@ -6,7 +6,7 @@
 ## install google-authenticator
 yum -y install google-authenticator
 sleep 5 ; google-authenticator # yyny # manual config
-
+#sleep 5 ; google-authenticator -t -f -d -w 3 -e 10 -r 3 -R 30 ; # non interactive 
 
 
 
