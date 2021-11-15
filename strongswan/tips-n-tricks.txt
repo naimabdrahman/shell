@@ -1,0 +1,124 @@
+## Strongswan on centos8 ##
+## ref ==> https://www.tecmint.com/setup-ipsec-vpn-with-strongswan-on-centos-rhel-8/
+
+============================================
+
+## env setup as follows ##
+
+Site 1 Gateway
+
+Public IP: 192.168.56.7    Pub IP1
+Private IP: 10.10.1.1/24    Priv IP1
+Private Subnet: 10.10.1.0/24    Subnet1
+
+Site 2 Gateway
+
+Public IP:  192.168.56.6    Pub IP2
+Private IP: 10.20.1.1/24    Priv IP2
+Private Subnet: 10.20.1.0/24    Subnet2
+
+
+============================================
+
+
+# /etc/sysctl.conf
+net.ipv4.ip_forward = 1 
+net.ipv6.conf.all.forwarding = 1 
+net.ipv4.conf.all.accept_redirects = 0 
+net.ipv4.conf.all.send_redirects = 0 
+
+============================================
+
+# /etc/sysconfig/network-scripts/route-eth0
+
+# Site 1 Gateway
+10.20.1.0/24  via 192.168.56.7
+#Priv IP2/Subnet2 via Pub IP1
+
+#Site 2 Gateway
+10.10.1.0/24 via 192.168.56.6
+#Priv IP1/Subnet1 via Pub IP2
+
+============================================
+
+# ipsec.conf 1
+# /etc/strongswan/ipsec.conf 
+
+config setup
+        charondebug="all"
+        uniqueids=yes
+conn gateway1-to-gateway2
+        type=tunnel
+        auto=start
+        keyexchange=ikev2
+        authby=secret
+        left=Pub IP1
+        leftsubnet=Subnet1
+        right=Pub IP2
+        rightsubnet=Subnet2
+        ike=aes256-sha1-modp1024!
+        esp=aes256-sha1!
+        aggressive=no
+        keyingtries=%forever
+        ikelifetime=28800s
+        lifetime=3600s
+        dpddelay=30s
+        dpdtimeout=120s
+        dpdaction=restart
+
+
+============================================
+
+# ipsec.conf 2
+# /etc/strongswan/ipsec.conf 
+
+config setup
+        charondebug="all"
+        uniqueids=yes
+conn gateway2-to-gateway1
+        type=tunnel
+        auto=start
+        keyexchange=ikev2
+        authby=secret
+        left=Pub IP2
+        leftsubnet=Subnet2
+        right=Pub IP1
+        rightsubnet=Subnet1
+        ike=aes256-sha1-modp1024!
+        esp=aes256-sha1!
+        aggressive=no
+        keyingtries=%forever
+        ikelifetime=28800s
+        lifetime=3600s
+        dpddelay=30s
+        dpdtimeout=120s
+        dpdaction=restart
+
+============================================
+
+# secret
+head -c 24 /dev/urandom | base64
+
+
+============================================
+
+
+# /etc/strongswan/ipsec.secrets
+
+
+# Site 1 Gateway
+192.168.56.7  192.168.56.6 : PSK "0GE0dIEA0IOSYS2o22wYdicj/lN4WoCL"
+#Pub IP1   Pub IP2 : PSK "<secret>"
+
+# Site 1 Gateway
+192.168.56.6  192.168.56.7 : PSK "0GE0dIEA0IOSYS2o22wYdicj/lN4WoCL"
+#Pub IP2   Pub IP1 : PSK "<secret>"
+
+
+
+============================================
+
+
+# systemctl restart strongswan
+# strongswan status
+
