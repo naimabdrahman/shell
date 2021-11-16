@@ -119,7 +119,6 @@ head -c 24 /dev/urandom | base64
 ============================================
 
 # yum -y install epel-release ; yum -y install strongswan
-# systemctl start strongswan ;systemctl enable strongswan ; systemctl status strongswan
-# systemctl restart strongswan
+# systemctl start strongswan ;systemctl enable strongswan ; systemctl status strongswan ; systemctl restart strongswan
 # strongswan status
  
