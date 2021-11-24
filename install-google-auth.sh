@@ -32,7 +32,8 @@ sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes
 echo "
 # These lines should be added to the end of the file
 Match User example-user
-    AuthenticationMethods keyboard-interactive
+    AuthenticationMethods keyboard-interactive,publickey
+
 " >> /etc/ssh/sshd_config
 
 service sshd restart
