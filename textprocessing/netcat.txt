@@ -1,0 +1,6 @@
+## netcat port ip-interface
+netcat -l 465 -s x.x.x.x
+
+
+## nc ip-interface port
+sudo nc -lv 10.10.10.10 25
