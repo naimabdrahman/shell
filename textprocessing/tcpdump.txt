@@ -1,0 +1,5 @@
+ ## tcpdump grep source
+ tcpdump  -i eth0 src 192.168.1.1
+ 
+ ## tcpdump grep ping /icmp 
+ tcpdump -vv -i eth0 icmp and icmp[icmptype]=icmp-echo
