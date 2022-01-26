@@ -1,0 +1,14 @@
+rabbitmqctl add_user serverworld password 
+rabbitmqctl list_users 
+rabbitmqctl change_password serverworld strongpassword 
+rabbitmqctl set_user_tags serverworld administrator 
+rabbitmqctl delete_user serverworld 
+
+rabbitmqctl add_vhost /my_vhost 
+rabbitmqctl list_vhosts 
+rabbitmqctl delete_vhost /my_vhost 
+rabbitmqctl set_permissions -p /my_vhost serverworld ".*" ".*" ".*" 
+rabbitmqctl list_permissions -p /my_vhost 
+
+rabbitmqctl list_user_permissions serverworld 
+rabbitmqctl clear_permissions -p /my_vhost serverworld 
