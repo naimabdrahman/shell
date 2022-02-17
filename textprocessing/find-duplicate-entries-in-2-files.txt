@@ -1,0 +1,2 @@
+## find duplicate entries in 2 files
+for x in `cat file1` ;  do cat file2 | grep $x ; done
