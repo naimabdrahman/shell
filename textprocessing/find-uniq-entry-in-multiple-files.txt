@@ -1,2 +1,2 @@
 ## find unique entry in multiple files
-(cat file1 file2 file4) | sort | uniq -c | awk '$1==1 {print $2}' | wc -l
+(cat file1 file3 file4) | sort | uniq -c | awk '$1==1 {print $2}' | wc -l
