@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>RabbitMQ REST API - Get Queue Message</h2>
+
+URL/API Call: <input type="text" id="theurl" value="http://192.168.0.116:15672/api/queues/%2f/"  size = "50" /> <br><br>
+Queue Name:   <input type="text" id="qname" value="webex"/> <br><br>
+Requeue: <input type="text" id="rq" value="true" /> (false = remove old values)<br><br>
+Message Count: <input type="text" id="mcount" value="5"/> <br><br>
+<button type="button" onclick="sendoutput()">Get Message(s)</button>
+<br>
+
+<hr>
+<p id="demo"></p>
+
+<script>
+function sendoutput() {
+	// RabbitMQ username and password
+	var username = "pete";
+	var password = "pete";
+	var xhttp = new XMLHttpRequest();
+	
+    var fullurl = document.getElementById("theurl").value + document.getElementById("qname").value + "//get";
+	
+	xhttp.open("POST", fullurl, true,username,password);
+	
+	// change to your Auth username and password
+
+	xhttp.setRequestHeader("Content-Type","application/jsonp");
+
+	var rq = document.getElementById("rq").value;
+	var mcount = document.getElementById("mcount").value;
+	var params = JSON.stringify({"count":mcount,"requeue":rq,"encoding":"auto","truncate":"50000"});
+	// Define a handler function when the response comes back
+	xhttp.onreadystatechange = function() {
+		// Get the response and put on it the screen
+		if (this.readyState == 4 ) {	
+			document.getElementById("demo").innerHTML = "Result=" +xhttp.responseText;
+		}
+	}
+
+	xhttp.send(params);
+}
+
+</script>
+</body>
+</html>
