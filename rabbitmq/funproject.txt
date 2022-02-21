@@ -1,1 +1,52 @@
 ## URL ==> https://funprojects.blog/2019/11/08/rabbitmq-rest-api/
+
+## Create an exchange: webex
+curl -i -u pete:pete -H “content-type:application/json” -X PUT http://172.104.59.169:15672/api/exchanges/%2f/webex -d '{ 
+ "type":"direct",
+ "auto_delete":false,
+ "durable":true,
+ "internal":false,
+ "arguments":{}
+ }'
+
+
+
+
+## Create a Queue: webq1
+curl -i -u pete:pete -H “content-type:application/json” -X PUT http://172.104.59.169:15672/api/queues/%2f/webq1 -d '{
+ "auto_delete":false,
+ "durable":true,
+ "arguments":{}
+ }'
+
+
+
+## Create Binding: Bind queue webq1 to exchange webex with a routing key of webq1
+curl -i -u pete:pete -H “content-type:application/json” -X POST http://172.104.59.169:15672/api/bindings/%2f/e/webex/q/webq1 -d '{
+ "routing_key":"webq1",
+ "arguments":{}
+ }'
+
+
+
+## Get a message: from queue webq1
+curl -u pete:pete -H “content-type:application/json” -X POST http://172.104.59.169:15672/api/queues/%2f/webq1/get -d '{
+ "count":5,
+ "requeue":true,
+ "encoding": "auto",
+ "ackmode": "ack_requeue_true",
+ "truncate":50000
+ }' | jq
+
+
+
+## Post a message (44.4) : to exchange webex with routing key webq1
+curl -i -u pete:pete -H “content-type:application/json” -X POST http://172.104.59.169:15672/api/exchanges/%2f/webex/publish -d '{
+ "properties":{},
+ "routing_key":"webq1",
+ "payload":"44.4",
+ "payload_encoding":"string"
+ }'
+
+
+
