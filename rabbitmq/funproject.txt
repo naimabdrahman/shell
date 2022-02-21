@@ -1,6 +1,8 @@
 ## URL ==> https://funprojects.blog/2019/11/08/rabbitmq-rest-api/
 
 
+## api ==> https://pulse.mozilla.org/api/index.html
+
 ## installation additional step
 rabbitmqctl add_user pete pete
 rabbitmqctl set_permissions -p / pete ".*" ".*" ".*"
