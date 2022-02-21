@@ -1,5 +1,13 @@
 ## URL ==> https://funprojects.blog/2019/11/08/rabbitmq-rest-api/
 
+
+## installation additional step
+rabbitmqctl add_user pete pete
+rabbitmqctl set_permissions -p / pete ".*" ".*" ".*"
+rabbitmqctl set_user_tags pete management administrator
+systemctl restart rabbitmq-server
+
+
 ## Create an exchange: webex
 curl -i -u pete:pete -H “content-type:application/json” -X PUT http://172.104.59.169:15672/api/exchanges/%2f/webex -d '{ 
  "type":"direct",
