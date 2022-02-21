@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>RabbitMQ REST API - An Exchange Message</h2>
+
+URL/API Call: <input type="text" id="theurl" value="http://192.168.0.116:15672/api/exchanges/%2f/"  size = "50" /> <br><br>
+Exchange Name:   <input type="text" id="exname" value="webex"/> <br><br>
+Routing Key:   <input type="text" id="rkey" value="webq1"/> <br><br>
+Value to Send:   <input type="text" id="theval" value="11.1"/> <br><br>
+
+<button type="button" onclick="sendoutput()">Send Output</button>
+<br>
+
+<hr>
+<p id="demo"></p>
+
+<script>
+function sendoutput() {
+	// RabbitMQ username and password
+	var username = "pete"; 
+	var password = "pete";  
+	
+	var xhttp = new XMLHttpRequest();
+	
+	var fullurl = document.getElementById("theurl").value + document.getElementById("exname").value + "//publish";
+	
+	xhttp.open("POST", fullurl, true,username,password);
+
+	xhttp.setRequestHeader("Content-Type","application/jsonp");
+	
+	var rkey = document.getElementById("r").value
+	var theval = document.getElementById("theval").value
+	var params = JSON.stringify({"properties":{},"routing_key":rkey,"payload":theval,"payload_encoding":"string"});
+	
+	// Define a handler function when the response comes back
+	xhttp.onreadystatechange = function() {
+		// Get the response and put on it the screen
+		if (this.readyState == 4 ) {	
+			document.getElementById("demo").innerHTML = "Result=" +xhttp.responseText;
+		}
+	}
+	xhttp.send(params);
+}
+</script>
+</body>
+</html>
