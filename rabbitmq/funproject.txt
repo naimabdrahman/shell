@@ -1,5 +1,6 @@
 ## URL ==> https://funprojects.blog/2019/11/08/rabbitmq-rest-api/
 
+## ack https://github.com/EasyNetQ/EasyNetQ.Management.Client/issues/62
 
 ## api ==> https://pulse.mozilla.org/api/index.html
 
