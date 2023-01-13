@@ -8,3 +8,8 @@ drwxr-xr-x 3 root root 75 Jan 26 12:59 sftpuser2
 
 
 permission ==> 755 is ok
+
+
+sudo chown root: /home/USERNAME
+sudo chmod 755 /home/USERNAME
+
