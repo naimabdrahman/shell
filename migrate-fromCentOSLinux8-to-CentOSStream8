@@ -1,0 +1,4 @@
+dnf --disablerepo '*' --enablerepo=extras swap centos-linux-repos centos-stream-repos
+dnf distro-sync
+
+migrate-fromCentOSLinux8-to-CentOSStream8
