@@ -11,6 +11,8 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
 EOF
 
+yum repolist
+
 
 ## install
 yum install -y mongodb-org
@@ -18,4 +20,4 @@ yum install -y mongodb-org
 
 ## service
 systemctl start mongod
-chkoconfig mongod on
+chkconfig mongod on
