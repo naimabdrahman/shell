@@ -6,4 +6,4 @@ curl -i -X PUT -H 'Content-Type: application/json' -d '{"name": "Updated item", 
 curl -u username:password http://example.com
 
 ## ref ==> https://restful-api.dev/
-
+## ref ==> https://reqbin.com/
