@@ -21,3 +21,6 @@ yum install -y mongodb-org
 ## service
 systemctl start mongod
 chkconfig mongod on
+
+
+## quick ref : https://www.mongodb.com/docs/v5.0/reference/mongo-shell/
