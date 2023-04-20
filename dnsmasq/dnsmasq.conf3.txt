@@ -7,7 +7,7 @@ expand-hosts
 local=/openshift.nar/
 address=/.app.openshift.nar/10.124.20.16 # subdomain
 
-listen-address=10.124.20.19
+listen-address=10.124.20.19 # which Interface should dnsmasq listen to e.g. 0.0.0.0 or 127.0.0.1 
 bind-interfaces
 
 #dhcp-range=lan,192.168.1.100,192.168.1.200
