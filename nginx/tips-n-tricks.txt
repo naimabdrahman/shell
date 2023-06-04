@@ -9,7 +9,9 @@ https://rollout.io/blog/tuning-nginx/
 curl -IkL -H "x-api-key: lalalalalala" http://localhost
 
 
-curl with apikey + username
+## curl with apikey + username
 curl  -IkL -H "x-api-key: lalalala" -H "x-api-user: userpoint" http://endpoint
 
- 
+
+## curl with mtls
+curl -IkL https://localhost  --key /root/key/example.key   --cert /root/key/example.crt
