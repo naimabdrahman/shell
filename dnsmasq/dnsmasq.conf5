@@ -1,4 +1,5 @@
 ## forwarding example is shown in server=/nar2.local/192.168.157.247
+## ref => https://serverfault.com/questions/711018/forward-dns-request-to-another-dns-server
 
 # /etc/dnsmasq.conf
 domain-needed
