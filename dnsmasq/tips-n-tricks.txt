@@ -78,3 +78,33 @@ server=8.8.4.4
 # static IP in /etc/hosts
 
 =============================================================================
+
+/etc/hosts for test1c
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+=============================================================================
+
+/etc/hosts for test2c
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.157.114   test1c.nar.local
+192.168.157.111  test2c.nar.local
+
+=============================================================================
+
+/etc/hosts for test3c
+
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.157.114   test1c.nar.local
+192.168.157.111  test2c.nar.local
+192.168.157.247    test3c.nar2.local
+
+=============================================================================
+
+
+
