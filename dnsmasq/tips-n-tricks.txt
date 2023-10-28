@@ -1,0 +1,79 @@
+=============================================================================
+## this is example of dns forwarding  is setup in 2 different dnsmasq server
+## result = success
+
+client ping test3c.nar2.local where dnsmasq server test2c.nar.local
+
+client >> ping test3c.nar2.local >> via dnsmasq server1 (test2c.nar.local) >> request is forwarded to another server, dnsmasq server2 (test3c.nar2.local) >> success
+=============================================================================
+
+## IP 
+192.168.157.114   test1c.nar.local
+192.168.157.111  test2c.nar.local
+192.168.157.247    test3c.nar2.local
+
+=============================================================================
+
+/etc/dnsmasq.conf for dnsmasq server1
+
+# /etc/dnsmasq.conf
+domain-needed
+bogus-priv
+
+domain=nar
+expand-hosts
+local=/nar.local/
+address=/test2c.nar.local/192.168.157.111 # subdomain
+
+listen-address=192.168.157.111 # which Interface should dnsmasq listen to e.g. 0.0.0.0 or 127.0.0.1 or 192.168.100.100
+bind-interfaces
+
+#dhcp-range=lan,192.168.1.100,192.168.1.200
+#dhcp-range=wifi,192.168.2.100,192.168.2.200
+#set default gateway
+#dhcp-option=lan,3,192.168.1.50
+#dhcp-option=wifi,3,192.168.2.50
+#set DNS server
+#dhcp-option=lan,6,192.168.1.10
+#dhcp-option=wifi,6,192.168.2.10
+
+server=/nar2.local/192.168.157.247 # nar2.local TLD will be forwareded to another dns server
+server=8.8.8.8
+server=8.8.4.4
+#server=208.67.220.220
+
+# static IP in /etc/hosts
+
+=============================================================================
+
+/etc/dnsmasq.conf for dnsmasq server2
+
+# /etc/dnsmasq.conf
+domain-needed
+bogus-priv
+
+domain=nar
+expand-hosts
+local=/nar2.local/
+address=/test3c.nar2.local/192.168.157.247 # subdomain
+
+listen-address=192.168.157.247 # which Interface should dnsmasq listen to e.g. 0.0.0.0 or 127.0.0.1 or 192.168.100.100
+bind-interfaces
+
+#dhcp-range=lan,192.168.1.100,192.168.1.200
+#dhcp-range=wifi,192.168.2.100,192.168.2.200
+#set default gateway
+#dhcp-option=lan,3,192.168.1.50
+#dhcp-option=wifi,3,192.168.2.50
+#set DNS server
+#dhcp-option=lan,6,192.168.1.10
+#dhcp-option=wifi,6,192.168.2.10
+
+#server=/nar2.local/192.168.157.247
+server=8.8.8.8
+server=8.8.4.4
+#server=208.67.220.220
+
+# static IP in /etc/hosts
+
+=============================================================================
