@@ -1,6 +1,7 @@
 =============================================================================
 ## this is example of dns forwarding  is setup in 2 different dnsmasq server
 ## result = success
+## ref => https://serverfault.com/questions/711018/forward-dns-request-to-another-dns-server
 
 client ping test3c.nar2.local where dnsmasq server test2c.nar.local
 
