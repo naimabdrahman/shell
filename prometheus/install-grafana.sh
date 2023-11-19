@@ -1,4 +1,4 @@
-## install grafana on centos 7
+## install grafana on centos 8
 
 touch /etc/yum.repos.d/grafana.repo
 cat > /etc/yum.repos.d/grafana.repo <<EOL
@@ -46,4 +46,3 @@ echo -e "\nu adm p adm\n\n"
 #echo -e "gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana" >> /etc/yum.repos.d/grafana.repo
 #echo "sslverify=1" >> /etc/yum.repos.d/grafana.repo
 #echo "sslcacert=/etc/pki/tls/certs/ca-bundle.crt" >> /etc/yum.repos.d/grafana.repo
-
