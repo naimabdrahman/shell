@@ -1,6 +1,6 @@
-## install prometheus on centos 7
+## install prometheus on centos 8
 
-package=prometheus-2.12.0.linux-amd64
+package=prometheus-2.48.0.linux-amd64
 
 
 ## preparation
@@ -11,7 +11,7 @@ cd /root/dl
 
 
 ## download and unpack package
-wget https://github.com/prometheus/prometheus/releases/download/v2.12.0/$package.tar.gz
+wget https://github.com/prometheus/prometheus/releases/download/v2.48.0/$package.tar.gz
 sleep 2
 tar -zxvf $package.tar.gz
 mv $package /root/
@@ -19,7 +19,7 @@ mv $package /root/
 
 
 ## quick run prometheus to see if it is working ## not in used. service is created instead
-#/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml &
+#/root/prometheus-2.48.0.linux-amd64/prometheus --config.file=/root/prometheus-2.48.0.linux-amd64/prometheus.yml &
 
 ## create prometheus service
 touch /etc/systemd/system/prometheus.service
@@ -30,8 +30,8 @@ Description=Prometheus
 
 [Service]
 User=root
-ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml
-#ExecStart=/root/prometheus-2.12.0.linux-amd64/prometheus --config.file=/root/prometheus-2.12.0.linux-amd64/prometheus.yml --storage.tsdb.retention.time=30d --web.enable-lifecycle
+ExecStart=/root/prometheus-2.48.0.linux-amd64/prometheus --config.file=/root/prometheus-2.48.0.linux-amd64/prometheus.yml
+#ExecStart=/root/prometheus-2.48.0.linux-amd64/prometheus --config.file=/root/prometheus-2.48.0.linux-amd64/prometheus.yml --storage.tsdb.retention.time=30d --web.enable-lifecycle
 
 [Install]
 WantedBy=default.target
