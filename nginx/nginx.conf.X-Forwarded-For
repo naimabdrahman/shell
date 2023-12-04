@@ -1,9 +1,8 @@
 http {
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                       '$status $body_bytes_sent "$http_referer" '
-                      '$proxy_add_x_forwarded_for' #this line to capture in X-Forwarded-For in nginx access logs
+                      '"X-Forwarded-For $proxy_add_x_forwarded_for" ' #To view X-Forwarded-For in nginx access log
                       '"$http_user_agent" "$http_x_forwarded_for"';
-
 
     access_log  /var/log/nginx/access.log  main;
 
@@ -31,7 +30,7 @@ http {
         include /etc/nginx/default.d/*.conf;
 
         location / {
-                proxy_pass http://chillexbro.com:80;
+                proxy_pass http://backend.local:80;
                 #proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -46,4 +45,6 @@ http {
             location = /50x.html {
         }
     }
+
+}
 
