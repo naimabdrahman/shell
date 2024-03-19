@@ -47,8 +47,9 @@ EOF
 systemctl daemon-reload
 
 systemctl start zookeeper
+chkconfig zookeeper on
 systemctl start kafka 
-
+chkconfig kafka on
 systemctl status zookeeper kafka
 
 
