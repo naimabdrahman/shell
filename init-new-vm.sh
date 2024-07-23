@@ -6,8 +6,8 @@
 yum -y install epel-release
 
 ## firewall
-service firewalld stop
-systemctl enable firewalld #chkconfig firewalld off
+systemctl stop firewalld #service firewalld stop
+systemctl disable firewalld #chkconfig firewalld off
 
 ## selinux off
 setenforce 0
@@ -15,7 +15,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 ## chrony
 yum -y install chrony
-service chronyd start
+systemctl start chronyd #service chronyd start
 systemctl enable chronyd #chkconfig chronyd on
 
 
@@ -42,7 +42,7 @@ yum -y install vim wget git bind-utils net-tools lsof screen telnet tar tree jq 
 
 ## fail2ban
 yum -y install fail2ban
-service fail2ban start
+systemctl start fail2ban #service fail2ban start
 systemctl enable fail2ban #chkconfig fail2ban on
 
 
