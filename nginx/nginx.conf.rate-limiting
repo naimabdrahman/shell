@@ -1,0 +1,37 @@
+http {
+    # Define a zone for request rate limiting
+    limit_req_zone $binary_remote_addr zone=req_limit:10m rate=5r/s;
+    
+    # Define a zone for connection limiting
+    limit_conn_zone $binary_remote_addr zone=conn_limit:10m;
+
+    server {
+        listen 80;
+
+        location / {
+            # Apply rate limiting with a burst allowance
+            limit_req zone=req_limit burst=8 nodelay;
+            
+            # Apply connection limiting
+            limit_conn conn_limit 5;
+
+            # Your other configurations, such as proxy_pass, root, etc.
+        }
+    }
+}
+
+# zone=req_limit:10m: Creates a zone named req_limit with 10MB of shared memory. This zone will store the states of the clients (IP addresses) and their request rates.
+
+# rate=5r/s: Specifies that each client can make up to 5 requests per second.
+
+# zone=conn_limit:10m: Creates a zone named conn_limit with 10MB of shared memory. This zone will store the states of the clients (IP addresses) and their connection counts.
+
+# zone=req_limit: Applies the rate limiting defined in the req_limit zone to this location.
+
+# burst=8: Allows clients to exceed the request rate by a burst of up to 8 requests. This means a client can make up to 8 requests in quick succession before being rate limited.
+
+# nodelay: Ensures that excess requests beyond the burst limit are rejected immediately rather than delayed.
+
+# conn_limit 5: Limits the number of simultaneous connections from a single client to 5.
+
+
