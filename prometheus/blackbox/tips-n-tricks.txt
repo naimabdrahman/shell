@@ -5,3 +5,4 @@ ref >> https://geekflare.com/monitor-website-with-blackbox-prometheus-grafana/
 ref >> https://prometheus.io/download/#blackbox_exporter
 
 In Import via grafana.com, put the dashboard id 7587 and click on Load.
+For Ping Probe, pls use id 18538
