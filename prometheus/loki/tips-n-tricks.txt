@@ -1,0 +1,4 @@
+## ref >> https://medium.com/@neupaneakrur11/configuring-promtail-and-loki-for-log-aggregation-with-nginx-logs-96fc3577e063
+
+curl -G -s "http://127.0.0.1:3100/loki/api/v1/query" --data-urlencode 'query={job="nginx"}'
+
