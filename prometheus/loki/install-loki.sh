@@ -1,7 +1,9 @@
 ## install loki
 
 ## download to /tmp
-wget https://github.com/grafana/loki/releases/download/v2.4.1/loki-linux-amd64.zip -P /tmp/
+#wget https://github.com/grafana/loki/releases/download/v2.4.1/loki-linux-amd64.zip -P /tmp/
+#wget https://github.com/grafana/loki/releases/download/v3.0.1/loki-linux-amd64.zip -P /tmp/
+wget https://github.com/grafana/loki/releases/download/v2.9.7/loki-linux-amd64.zip -P /tmp/
 unzip /tmp/loki-linux-amd64.zip -d /tmp/
 mv /tmp/loki-linux-amd64 /usr/local/bin/loki
 
