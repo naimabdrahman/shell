@@ -2,3 +2,6 @@
 
 curl -G -s "http://127.0.0.1:3100/loki/api/v1/query" --data-urlencode 'query={job="nginx"}'
 
+
+loki dashboard 13639
+
