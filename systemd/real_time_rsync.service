@@ -1,0 +1,16 @@
+[Unit]
+Description=Near Real-Time Rsync Between /mnt/tmp1 and /mnt/tmp2
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/real_time_sync.sh
+Restart=always
+User=root
+WorkingDirectory=/
+StandardOutput=append:/var/log/real_time_sync.log
+StandardError=append:/var/log/real_time_sync.log
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[Install]
+WantedBy=multi-user.target
+
