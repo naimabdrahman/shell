@@ -1,0 +1,41 @@
+## dnsmasq.conf6
+## Example configuration for local and split DNS with PTR records
+
+# Only forward queries with a domain name
+domain-needed
+
+# Never forward private address ranges
+bogus-priv
+
+# Local domain
+domain=nar
+expand-hosts
+local=/nar.local/
+address=/test2c.nar.local/192.168.157.111 # subdomain
+
+# PTR record for reverse DNS lookup
+ptr-record=111.157.168.192.in-addr.arpa,test2c.nar.local
+
+# Listen only on specific interface
+listen-address=192.168.157.111
+bind-interfaces
+
+## DHCP (Uncomment if needed)
+#dhcp-range=lan,192.168.1.100,192.168.1.200
+#dhcp-range=wifi,192.168.2.100,192.168.2.200
+#set default gateway
+#dhcp-option=lan,3,192.168.1.50
+#dhcp-option=wifi,3,192.168.2.50
+#set DNS server
+#dhcp-option=lan,6,192.168.1.10
+#dhcp-option=wifi,6,192.168.2.10
+
+# Forward .nar2.local TLD to another DNS server
+server=/nar2.local/192.168.157.247
+
+# Public DNS for Internet FQDNs
+server=8.8.8.8
+server=8.8.4.4
+#server=208.67.220.220
+
+# Static IPs should also be listed in /etc/hosts for full A/PTR resolution
