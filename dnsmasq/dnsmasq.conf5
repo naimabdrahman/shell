@@ -1,34 +1,52 @@
 ## forwarding example is shown in server=/nar2.local/192.168.157.247
 ## ref => https://serverfault.com/questions/711018/forward-dns-request-to-another-dns-server
 
-# /etc/dnsmasq.conf
+
+
+## -------------------------------
+## DNSMASQ CONFIGURATION (POC)
+## -------------------------------
+
+# Prevent forwarding of plain names (like "printer") to upstream resolvers
 domain-needed
+
+# Prevent forwarding of reverse lookups for private IP ranges
 bogus-priv
 
+# Define local domain
+# Short names in /etc/hosts will automatically expand to <name>.nar.local
 domain=nar.local
 expand-hosts
+
+# Mark nar.local as "authoritative" — dnsmasq will not forward queries for this domain
 local=/nar.local/
 
-# Every query under example.com (www.test2c.nar.local, api.test2c.nar.local, etc.) returns 192.168.157.111
-address=/test2c.nar.local/192.168.157.111 # subdomain
+# Static mapping using address= (be careful: this applies to all subdomains under test2c.nar.local)
+# Example: test2c.nar.local, www.test2c.nar.local, api.test2c.nar.local → 192.168.157.111
+# If you want only one record, better to put in /etc/hosts or addn-hosts file.
+address=/test2c.nar.local/192.168.157.111
 
-listen-address=0.0.0.0 # which Interface should dnsmasq listen to e.g. 0.0.0.0 or 127.0.0.1 or 192.168.100.100
+# Which IP(s) dnsmasq should listen on
+# 0.0.0.0 = all interfaces; safer alternative is to restrict (e.g. listen-address=192.168.157.111)
+listen-address=0.0.0.0
 bind-interfaces
 
-# commented out - all dhcp config
+# DHCP-related configs (disabled for now, only DNS is in use)
 #dhcp-range=lan,192.168.1.100,192.168.1.200
 #dhcp-range=wifi,192.168.2.100,192.168.2.200
-#set default gateway
-#dhcp-option=lan,3,192.168.1.50
-#dhcp-option=wifi,3,192.168.2.50
-#set DNS server
-#dhcp-option=lan,6,192.168.1.10
-#dhcp-option=wifi,6,192.168.2.10
+#dhcp-option=lan,3,192.168.1.50       # Default gateway for LAN
+#dhcp-option=wifi,3,192.168.2.50      # Default gateway for Wi-Fi
+#dhcp-option=lan,6,192.168.1.10       # DNS server for LAN clients
+#dhcp-option=wifi,6,192.168.2.10      # DNS server for Wi-Fi clients
 
-server=/nar2.local/192.168.157.247 # nar2.local TLD will be forwareded to another dns server
+# Conditional forwarding:
+# Queries for *.nar2.local will be sent to 192.168.157.247
+server=/nar2.local/192.168.157.247
 
+# Upstream DNS servers for everything else
 server=8.8.8.8
 server=8.8.4.4
-#server=208.67.220.220
+#server=208.67.220.220  # OpenDNS (disabled for now)
 
-# static IP in /etc/hosts
+# Note: /etc/hosts is still read (unless "no-hosts" is added)
+# Any static IP-to-hostname entries can be placed there
